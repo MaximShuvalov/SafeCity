@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/appeal.css">
+
+    <title>ЦООД</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__body">
+                <div class="header__inner">
+                    <div class="header__burger">
+                        <i class="fas fa-bars"></i>
+                    </div>
+
+                    <div class="header__logo">
+
+                    </div>
+
+                </div>
+
+                <nav class="header__menu">
+                    <ul class="header__list">
+                        <li>
+                            <a href="index.html" class="header__link">Главная</a>
+                        </li>
+                        <li>
+                            <a href="" class="header__link">Об учереждении</a>
+                        </li>
+                        <li>
+                            <a href="" class="header__link">Документация</a>
+                        </li>
+                        <li>
+                            <a href="appeal.html" class="header__link">Обращение граждан
+                     </a>
+                        </li>
+                        <li>
+                            <a href="" class="header__link">Контакты </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="appeal">
+        <div class="appeal__title">
+            <h1>Обращение граждан</h1>
+        </div>
+        <div class="appeal__inner">
+            <div class="appeal__left">
+                <p>
+                    Данная форма является официальным обращением в Центр организации дорожного движения по Омской области.
+                </p>
+
+                <p>
+                    <br> Уважаемый посетитель, обращаем Ваше внимание на следующие положения:
+                </p>
+
+                <p>
+                    <br> • отправляя с помощью данной формы официальное обращение, Вы подтверждаете свое согласие на передачу информации в электронной форме (в том числе персональных данных) по открытым каналам связи сети Интернет;
+                    <br> • сообщения, содержащие угрозы, оскорбления или ненормативную лексику, рассматриваться не будут;
+                </p>
+
+                <p>
+                    <br> Для отправки обращения необходимо корректно заполнить все поля, которые есть в форме.
+                </p>
+
+            </div>
+            <div class="appeal__right">
+                <div class="appeal__right-title">
+                    <h1>Форма обратной звязи</h1>
+                </div>
+                <div class="appeal__right-inner">
+
+                    <div class="appeal__right-item">
+                        <div class="appeal__right-subtitle">
+                            Класс обращения
+                        </div>
+                        <select id="classappeal" class="appeal__select">
+                            <option selected="selected" value="10">Выберите класс обращения</option></select>
+                    </div>
+
+                    <div class="appeal__right-item">
+                        <div class="appeal__right-subtitle">
+                            Участники дорожного движения
+                        </div>
+                        <select id="typeappeal" class="appeal__select">
+                            <option selected="selected" value="10">Выберите тип участника дорожного движения</option>
+                        </select>
+                    </div>
+
+                    <div class="appeal__right-item">
+                        <div class="appeal__right-subtitle">
+                            Выберите тип обращения
+                        </div>
+                        <select id="subtypesappeal" class="appeal__select">
+                            <option selected="selected" value="10">Выберите тип обращения</option>
+                        </select>
+                    </div>
+
+                    <div class="appeal__right-item">
+                        <div class="appeal__right-subtitle">
+                            Email
+                        </div>
+                        <input type="email" required placeholder="Часто используемый Email" class="appeal__iput-email" id="input_email">
+                    </div>
+
+                    <div class="appeal__right-item">
+                        <div class="appeal__right-subtitle">
+                            Сообщение
+                        </div>
+                        <input type="text" required placeholder="Введите ваше обращение" class="appeal__message" id="input_message">
+                    </div>
+
+                    <div class="appeal__right-item">
+
+                        <i class="fas fa-paperclip"></i>
+                        <input type="file">
+
+                    </div>
+
+                    <div class="appeal__right-item">
+
+                        <input type="checkbox" id="check"> Я согласен / cогласна на обработку персональных данных
+
+                    </div>
+
+                    <div class="button">
+                        <button onclick="postAppeal()">Отправить</button>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+        <div class="footer__inner">
+
+            <div class="footer__item">
+
+                <div class="footer__title">
+                    Меню
+                </div>
+
+                <div class="footer__text">
+
+                    <a class="footer__link" href="">Главная</a>
+                    <a class="footer__link" href="">Об учереждении</a>
+                    <a class="footer__link" href="">Документация</a>
+                    <a class="footer__link" href="">Обращение граждан</a>
+
+                </div>
+
+
+            </div>
+
+            <div class="footer__item">
+
+                <div class="footer__title">
+                    Контакты
+                </div>
+
+                <div class="footer__text">
+
+                    <p>г. Омск, ул. Мира, д.64</p>
+                    <p>990-00-00</p>
+                    <p>info@zdoomsk@mail.ru</p>
+
+                </div>
+
+            </div>
+
+            <div class="footer__item">
+
+                <div class="footer__title">
+                    Социальные сети
+                </div>
+
+                <div class="footer__link--icon">
+                    <a href="">
+                        <i class="fab fa-vk"></i>
+                    </a>
+                    <a href="">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="footer__item">
+
+                <div class="footer__title">
+                    Подписка
+                </div>
+
+                <div class="footer__text">
+                    Подпишитесь на свежие новости
+                </div>
+
+                <div class="footer__input">
+                    <input type="" required placeholder="Введите ваш Email">
+                </div>
+
+                <div class="footer__but">
+                    <button>Подписаться</button>
+                </div>
+
+            </div>
+
+        </div>
+    </footer>
+
+
+
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/16.11.0/umd/react.development.js"></script>
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js"></script>
+    <script src="js/appeal.jsx"></script>
+
+</body>
+
+</html>
