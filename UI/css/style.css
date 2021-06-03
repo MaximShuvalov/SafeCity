@@ -1,0 +1,79 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: Century Gothic;
+    margin: 0;
+}
+
+.linc-color:hover{
+    color: rgb(2, 36, 77);
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.linc-color{
+    font-weight: 700;
+    color: rgb(31, 73, 125);
+}
+
+.text-color{
+    font-weight: bold;
+    color: rgb(31, 73, 125);
+}
+
+.stat{
+    margin: 40px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.stat--item{
+    margin: auto;
+    text-align: center;
+    align-items: center;
+}
+
+.stat--text{
+font-weight: bold;
+}
+
+.feedback{
+    margin: 40px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.feedback--item{
+    margin: auto;
+    text-align: center;
+    align-items: center;
+}
+
+.made{
+    margin: 30px auto;
+}
+
+.footer{
+    background-color: rgb(31, 73, 125);;
+}
+
+.footer--inner{
+    display: flex;
+    justify-content: center;
+}
+
+.footer--item{
+    margin: 30px;
+    align-items: center;
+    color: white;
+}
+
