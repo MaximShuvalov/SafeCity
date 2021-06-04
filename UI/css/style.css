@@ -21,6 +21,7 @@ body {
 }
 
 .linc-color{
+    font-size: 20px;
     font-weight: 700;
     color: rgb(31, 73, 125);
 }
