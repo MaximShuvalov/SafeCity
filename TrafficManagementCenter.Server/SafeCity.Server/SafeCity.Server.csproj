@@ -14,6 +14,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Model\Model.csproj" />
+      <ProjectReference Include="..\SafeCity.EmailSender\SafeCity.EmailSender.csproj" />
       <ProjectReference Include="..\SafeCity.Server.Db\SafeCity.Server.Db.csproj" />
     </ItemGroup>
 
