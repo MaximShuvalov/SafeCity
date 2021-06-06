@@ -13,7 +13,7 @@ namespace TrafficManagementCenter.Server.Model.Tests
         [Test]
         public void CreateTypeAppealTest()
         {
-            var typeAppeal = new TypeAppeal();
+            var typeAppeal = new AppealType();
             typeAppeal.Key = 001;
             typeAppeal.Name = "Gibdd";
             typeAppeal.Note = "Проблемы, которые адресованы ГИБДД";
@@ -23,11 +23,11 @@ namespace TrafficManagementCenter.Server.Model.Tests
         [Test]
         public void CreateSubtypeAppealTest()
         {
-            var subtypeAppeal = new SubtypeAppeal();
+            var subtypeAppeal = new AppealSubtype();
             subtypeAppeal.Key = 0001;
             subtypeAppeal.Name = "Дорожные знаки";
             subtypeAppeal.Name = "Вопросы о нецелесообразности установленных знаков";
-            subtypeAppeal.Type = new TypeAppeal();
+            subtypeAppeal.AppealType = new AppealType();
             Assert.Pass();
         }
         
@@ -36,7 +36,7 @@ namespace TrafficManagementCenter.Server.Model.Tests
         {
             var appeal = new Appeal();
             appeal.Key = 0001;
-            appeal.Subtype = new SubtypeAppeal();
+            appeal.AppealSubtype = new AppealSubtype();
             appeal.Email = "test@test.ru";
             appeal.Text = "Прошу решить проблему";
             appeal.Attachment = "path/to/attachment";

@@ -8,15 +8,18 @@ namespace Model
         [Key]
         public long Key { get; set; }
         
-        [ForeignKey("Subtype")]
+        [ForeignKey("AppealSubtype")]
         public long SubtypeId { get; set; }
-        public SubtypeAppeal Subtype { get; set; }
+        public AppealSubtype AppealSubtype { get; set; }
         
-        [ForeignKey("AppealClass")]
-        public long ClassAppealId { get; set; }
-        public AppealClass AppealClass { get; set; }
+        [ForeignKey("AppealType")]
+        public long AppealTypeId { get; set; }
+        public AppealType AppealType { get; set; }
         public string Email { get; set; }
         public string Text { get; set; }
+        [ForeignKey("GeoPoint")]
+        public long GeoPointId { get; set; }
+        public GeoPoint GeoPoint { get; set; }
         public string Attachment { get; set; }
     }
 }

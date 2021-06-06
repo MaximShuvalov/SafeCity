@@ -8,7 +8,7 @@ using TrafficManagementCenter.Server.Db.Context;
 
 namespace TrafficManagementCenter.Server.Db.Repositories
 {
-    public class SubtypeAppealRepository : IRepository<SubtypeAppeal>
+    public class SubtypeAppealRepository : IRepository<AppealSubtype>
     {
         private readonly AppDbContext _context;
 
@@ -17,25 +17,25 @@ namespace TrafficManagementCenter.Server.Db.Repositories
             _context = context;
         }
 
-        public SubtypeAppeal Get(long id) => _context.SubtypeAppeals.Include(p => p.Type)
+        public AppealSubtype Get(long id) => _context.SubtypeAppeals.Include(p => p.AppealType)
             .FirstOrDefault(o => o.Key.Equals(id));
 
-        public async Task<IEnumerable<SubtypeAppeal>> GetEntities() => await Task.Run(() =>
+        public async Task<IEnumerable<AppealSubtype>> GetEntities() => await Task.Run(() =>
         {
-            return _context.SubtypeAppeals.Include(p => p.Type);
+            return _context.SubtypeAppeals.Include(p => p.AppealType);
         });
 
-        public async Task Add(SubtypeAppeal entity) => await Task.Run(() =>
+        public async Task Add(AppealSubtype entity) => await Task.Run(() =>
         {
             if (entity is null)
-                throw new ArgumentException("SubtypeAppeal is null");
+                throw new ArgumentException("AppealSubtype is null");
             _context.SubtypeAppeals.Add(entity);
         });
 
-        public void Delete(SubtypeAppeal entity)
+        public void Delete(AppealSubtype entity)
         {
             if (entity is null)
-                throw new ArgumentException("SubtypeAppeal is null");
+                throw new ArgumentException("AppealSubtype is null");
             _context.SubtypeAppeals.Remove(entity);
         }
     }

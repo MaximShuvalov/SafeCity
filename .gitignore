@@ -8,3 +8,4 @@ TrafficManagementCenter.Server/TrafficManagementCenter.Server.sln.DotSettings.us
 node_modules
 .vscode
 buildArtifacts
+.vs/

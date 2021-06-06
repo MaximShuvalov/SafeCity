@@ -49,7 +49,7 @@ namespace TrafficManagementCenter.Server.Db.Migrations
                     b.ToTable("Appeal");
                 });
 
-            modelBuilder.Entity("Model.AppealClass", b =>
+            modelBuilder.Entity("Model.Class", b =>
                 {
                     b.Property<long>("Key")
                         .ValueGeneratedOnAdd()
@@ -61,10 +61,10 @@ namespace TrafficManagementCenter.Server.Db.Migrations
 
                     b.HasKey("Key");
 
-                    b.ToTable("ClassAppeal");
+                    b.ToTable("Class");
                 });
 
-            modelBuilder.Entity("Model.SubtypeAppeal", b =>
+            modelBuilder.Entity("Model.AppealSubtype", b =>
                 {
                     b.Property<long>("Key")
                         .ValueGeneratedOnAdd()
@@ -87,7 +87,7 @@ namespace TrafficManagementCenter.Server.Db.Migrations
                     b.ToTable("SubtypeAppeals");
                 });
 
-            modelBuilder.Entity("Model.TypeAppeal", b =>
+            modelBuilder.Entity("Model.AppealType", b =>
                 {
                     b.Property<long>("Key")
                         .ValueGeneratedOnAdd()
@@ -102,37 +102,37 @@ namespace TrafficManagementCenter.Server.Db.Migrations
 
                     b.HasKey("Key");
 
-                    b.ToTable("TypeAppeal");
+                    b.ToTable("AppealType");
                 });
 
             modelBuilder.Entity("Model.Appeal", b =>
                 {
-                    b.HasOne("Model.AppealClass", "AppealClass")
+                    b.HasOne("Model.Class", "Class")
                         .WithMany()
                         .HasForeignKey("ClassAppealId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Model.SubtypeAppeal", "Subtype")
+                    b.HasOne("Model.AppealSubtype", "AppealSubtype")
                         .WithMany()
                         .HasForeignKey("SubtypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("AppealClass");
+                    b.Navigation("Class");
 
-                    b.Navigation("Subtype");
+                    b.Navigation("AppealSubtype");
                 });
 
-            modelBuilder.Entity("Model.SubtypeAppeal", b =>
+            modelBuilder.Entity("Model.AppealSubtype", b =>
                 {
-                    b.HasOne("Model.TypeAppeal", "Type")
+                    b.HasOne("Model.AppealType", "AppealType")
                         .WithMany()
                         .HasForeignKey("TypesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Type");
+                    b.Navigation("AppealType");
                 });
 #pragma warning restore 612, 618
         }

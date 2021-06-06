@@ -7,7 +7,7 @@ using TrafficManagementCenter.Server.Db.Context;
 
 namespace TrafficManagementCenter.Server.Db.Repositories
 {
-    public class TypeAppealRepository : IRepository<TypeAppeal>
+    public class TypeAppealRepository : IRepository<AppealType>
     {
         private readonly AppDbContext _context;
 
@@ -15,21 +15,21 @@ namespace TrafficManagementCenter.Server.Db.Repositories
         {
             _context = context;
         }
-        public TypeAppeal Get(long id) => _context.TypeAppeal.FirstOrDefault(p => p.Key.Equals(id));
+        public AppealType Get(long id) => _context.TypeAppeal.FirstOrDefault(p => p.Key.Equals(id));
 
-        public async Task<IEnumerable<TypeAppeal>> GetEntities() => await Task.Run(()=> _context.TypeAppeal);
+        public async Task<IEnumerable<AppealType>> GetEntities() => await Task.Run(()=> _context.TypeAppeal);
 
-        public async Task Add(TypeAppeal entity) => await Task.Run(() =>
+        public async Task Add(AppealType entity) => await Task.Run(() =>
         {
             if (entity is null)
-                throw new ArgumentException("TypeAppeal is null");
+                throw new ArgumentException("AppealType is null");
             _context.TypeAppeal.Add(entity);
         });
 
-        public void Delete(TypeAppeal entity)
+        public void Delete(AppealType entity)
         {
             if (entity is null)
-                throw new ArgumentException("TypeAppeal is null");
+                throw new ArgumentException("AppealType is null");
             _context.TypeAppeal.Remove(entity);
         }
     }

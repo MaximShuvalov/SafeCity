@@ -18,14 +18,12 @@ namespace TrafficManagementCenter.Server.Db.Repositories
             _context = context;
         }
 
-        public Appeal Get(long id) => _context.Appeal.Include(p => p.AppealClass)
-            .Include(o => o.Subtype)
+        public Appeal Get(long id) => _context.Appeal.Include(o => o.AppealSubtype)
             .FirstOrDefault(p => p.Key.Equals(id));
 
         public async Task<IEnumerable<Appeal>> GetEntities() => await Task.Run(() =>
         {
-            return _context.Appeal.Include(p => p.AppealClass)
-            .Include(o => o.Subtype);
+            return _context.Appeal.Include(o => o.AppealSubtype);
         });
 
         public async Task Add(Appeal entity) => await Task.Run(() =>
@@ -42,19 +40,15 @@ namespace TrafficManagementCenter.Server.Db.Repositories
             _context.Appeal.Remove(entity);
         }
         
-        public async Task Add(Appeal appeal, string nameClassAppeal,
-            string nameSubtypeAppeal)
+        public async Task Add(Appeal appeal, string nameSubtypeAppeal)
         {
-            var classAppealRepository = RepositoryFactory<AppealClass>.Create(_context);
-            var subtypeAppealRepository = RepositoryFactory<SubtypeAppeal>.Create(_context);
-
-            var classAppeal = (await classAppealRepository.GetEntities()).FirstOrDefault(p => p.Name.Equals(nameClassAppeal));
+            var subtypeAppealRepository = RepositoryFactory<AppealSubtype>.Create(_context);
+            
             var subtypeAppeal = (await subtypeAppealRepository.GetEntities())
                 .FirstOrDefault(p => p.Name.Equals(nameSubtypeAppeal));
-            if (classAppeal is null || subtypeAppeal is null)
+            if (subtypeAppeal is null)
                 throw new Exception("The database does not contain the given object");
             appeal.SubtypeId = subtypeAppeal.Key;
-            appeal.ClassAppealId = classAppeal.Key;
 
             await Add(appeal);
         }

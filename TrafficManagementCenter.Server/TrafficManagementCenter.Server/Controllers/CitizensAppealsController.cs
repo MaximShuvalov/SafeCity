@@ -10,7 +10,7 @@ using TrafficManagementCenter.Server.Db.UnitOfWork;
 
 namespace TrafficManagementCenter.Server.Controllers
 {
-    [Route("api/citizens")]
+    [Route("api")]
     [ApiController]
     public class CitizensAppealsController : ControllerBase
     {
@@ -36,6 +36,13 @@ namespace TrafficManagementCenter.Server.Controllers
                 return Ok(await _uow.GetRepositories<Appeal>().GetEntities());
         }
 
+        [HttpGet("allpoints")]
+        public async Task<IActionResult> GetAllPoints()
+        {
+            using (_uow)
+                return Ok(await _uow.GetRepositories<GeoPoint>().GetEntities());
+        }
+
         [HttpGet("allbyemail")]
         public async Task<IActionResult> GetAllAppealsByEmail(string email)
         {
@@ -47,10 +54,9 @@ namespace TrafficManagementCenter.Server.Controllers
         public async Task<IActionResult> AddAppeal([FromBody] Appeal appeal, [FromQuery] string nameClass,
             [FromQuery] string nameSubtype)
         {
-            //todo mshuvalov: подумать на передачей контекста
             using (_uow)
             {
-                await ((AppealRepository) _uow.GetRepositories<Appeal>()).Add(appeal, nameClass, nameSubtype);
+                await ((AppealRepository) _uow.GetRepositories<Appeal>()).Add(appeal, nameSubtype);
                 _uow.Commit();
             }
 
@@ -60,22 +66,23 @@ namespace TrafficManagementCenter.Server.Controllers
         [HttpGet("alltypes")]
         public async Task<IActionResult> GetAllTypesAppeal()
         {
-            using(_uow)
-                return Ok(await _uow.GetRepositories<TypeAppeal>().GetEntities());
+            using (_uow)
+                return Ok(await _uow.GetRepositories<AppealType>().GetEntities());
         }
 
-        [HttpGet("allclasses")]
+        [HttpGet("alltypes")]
         public async Task<IActionResult> GetAllClassesAppeal()
         {
-            using(_uow)
-                return Ok(await _uow.GetRepositories<AppealClass>().GetEntities());
+            using (_uow)
+                return Ok(await _uow.GetRepositories<AppealType>().GetEntities());
         }
 
         [HttpGet("subtypesbytype")]
         public async Task<IActionResult> GetSubtypeByTypeAppeal(string nameType)
         {
-            using(_uow)
-                return Ok( await ((SubtypeAppealRepository) _uow.GetRepositories<SubtypeAppeal>()).GetSubtypeByTypeAppealAsync(nameType));
+            using (_uow)
+                return Ok(await ((SubtypeAppealRepository) _uow.GetRepositories<AppealSubtype>())
+                    .GetSubtypeByTypeAppealAsync(nameType));
         }
     }
 }

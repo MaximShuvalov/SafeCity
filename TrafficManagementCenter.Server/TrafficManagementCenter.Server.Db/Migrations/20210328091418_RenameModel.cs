@@ -8,7 +8,7 @@ namespace TrafficManagementCenter.Server.Db.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "ClassAppeal",
+                name: "Class",
                 columns: table => new
                 {
                     Key = table.Column<long>(type: "bigint", nullable: false)
@@ -21,7 +21,7 @@ namespace TrafficManagementCenter.Server.Db.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TypeAppeal",
+                name: "AppealType",
                 columns: table => new
                 {
                     Key = table.Column<long>(type: "bigint", nullable: false)
@@ -50,7 +50,7 @@ namespace TrafficManagementCenter.Server.Db.Migrations
                     table.ForeignKey(
                         name: "FK_SubtypeAppeals_TypeAppeal_TypesId",
                         column: x => x.TypesId,
-                        principalTable: "TypeAppeal",
+                        principalTable: "AppealType",
                         principalColumn: "Key",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -73,7 +73,7 @@ namespace TrafficManagementCenter.Server.Db.Migrations
                     table.ForeignKey(
                         name: "FK_Appeal_ClassAppeal_ClassAppealId",
                         column: x => x.ClassAppealId,
-                        principalTable: "ClassAppeal",
+                        principalTable: "Class",
                         principalColumn: "Key",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -106,13 +106,13 @@ namespace TrafficManagementCenter.Server.Db.Migrations
                 name: "Appeal");
 
             migrationBuilder.DropTable(
-                name: "ClassAppeal");
+                name: "Class");
 
             migrationBuilder.DropTable(
                 name: "SubtypeAppeals");
 
             migrationBuilder.DropTable(
-                name: "TypeAppeal");
+                name: "AppealType");
         }
     }
 }

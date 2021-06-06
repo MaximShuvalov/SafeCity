@@ -14,12 +14,10 @@ namespace TrafficManagementCenter.Server.Db.Factory
         {
             if (typeof(T) == typeof(Appeal))
                 return new AppealRepository(context) as IRepository<T>;
-            else if (typeof(T) == typeof(TypeAppeal))
+            else if (typeof(T) == typeof(AppealType))
                 return new TypeAppealRepository(context) as IRepository<T>;
-            else if (typeof(T) == typeof(SubtypeAppeal))
+            else if (typeof(T) == typeof(AppealSubtype))
                 return new SubtypeAppealRepository(context) as IRepository<T>;
-            else if (typeof(T) == typeof(AppealClass))
-                return new ClassAppealsRepository(context) as IRepository<T>;
             throw new Exception();
         }
     }

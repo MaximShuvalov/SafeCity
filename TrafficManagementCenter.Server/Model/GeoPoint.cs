@@ -2,11 +2,11 @@
 
 namespace Model
 {
-    public class TypeAppeal
+    public class GeoPoint
     {
         [Key]
         public long Key { get; set; }
-        public string Name { get; set; }
-        public string Note { get; set; }
+        public float Lat { get; set; }
+        public float Lng { get; set; }
     }
 }

@@ -19,12 +19,10 @@ namespace TrafficManagementCenter.Server.Db.UnitOfWork
         {
             if (typeof(T) == typeof(Appeal))
                 return new AppealRepository(_context) as IRepository<T>;
-            else if (typeof(T) == typeof(TypeAppeal))
+            else if (typeof(T) == typeof(AppealType))
                 return new TypeAppealRepository(_context) as IRepository<T>;
-            else if (typeof(T) == typeof(SubtypeAppeal))
+            else if (typeof(T) == typeof(AppealSubtype))
                 return new SubtypeAppealRepository(_context) as IRepository<T>;
-            else if (typeof(T) == typeof(AppealClass))
-                return new ClassAppealsRepository(_context) as IRepository<T>;
             throw new Exception();
         }
 

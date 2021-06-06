@@ -19,10 +19,10 @@ namespace TrafficManagementCenter.Server.Db.Tests
         [Explicit("Интеграционный")]
         public void AddSubtypeAppealTest()
         {
-            var subtype = new SubtypeAppeal()
+            var subtype = new AppealSubtype()
             {
                 Name = "TestSubtype",
-                Note = "Subtype create only test"
+                Note = "AppealSubtype create only test"
             };
             var repos = new SubtypeAppealRepository(new AppDbContext());
             repos.Add(subtype);
@@ -35,10 +35,10 @@ namespace TrafficManagementCenter.Server.Db.Tests
         [Explicit("Интеграционный")]
         public void AddTypeAppealTest()
         {
-            var type = new TypeAppeal()
+            var type = new AppealType()
             {
                 Name = "TestType",
-                Note = "Type create only test"
+                Note = "AppealType create only test"
             };
             var repos = new TypeAppealRepository(new AppDbContext());
             repos.Add(type);
@@ -90,8 +90,8 @@ namespace TrafficManagementCenter.Server.Db.Tests
 
             var repos1 = RepositoryFactory<Appeal>.Create(new AppDbContext());
 
-            ((AppealRepository)repos1).Add(appeal, "Замечание", "TestSubtype");
-            ((AppealRepository)repos1).Add(appeal2, "Замечание", "TestSubtype");
+            ((AppealRepository)repos1).Add(appeal,  "TestSubtype");
+            ((AppealRepository)repos1).Add(appeal2,  "TestSubtype");
             repos1.Delete(appeal);
             repos1.Delete(appeal2);
 
@@ -146,25 +146,7 @@ namespace TrafficManagementCenter.Server.Db.Tests
             repos.Delete(appeal);
             repos.Delete(appeal1);
         }
-        
-        [Test]
-        [Explicit("Интеграционный")]
-        public async void GetAllClassAppealsTest()
-        {
-            var classAppeal = new AppealClass()
-            {
-                Name = "Замечание"
-            };
 
-            var repos = RepositoryFactory<AppealClass>.Create(new AppDbContext());
-            
-            repos.Add(classAppeal);
-            
-            Assert.True((await repos.GetEntities()).Any());
-            
-            repos.Delete(classAppeal);
-        }
-        
         [Test]
         [Explicit("Интеграционный")]
         public void GetAppealTest()
@@ -177,15 +159,14 @@ namespace TrafficManagementCenter.Server.Db.Tests
 
             var repos1 = RepositoryFactory<Appeal>.Create(new AppDbContext());
 
-            ((AppealRepository)repos1).Add(appeal2, "Замечание", "TestSubtype");
+            ((AppealRepository)repos1).Add(appeal2, "TestSubtype");
 
             var receivedAppeal = repos1.Get(appeal2.Key);
             
             Assert.True(receivedAppeal.Key.Equals(appeal2.Key));
             Assert.True(receivedAppeal.Email.Equals(appeal2.Email));
-            Assert.True(receivedAppeal.Subtype.Name.Equals(appeal2.Subtype.Name));
-            Assert.True(receivedAppeal.AppealClass.Name.Equals(appeal2.AppealClass.Name));
-
+            Assert.True(receivedAppeal.AppealSubtype.Name.Equals(appeal2.AppealSubtype.Name));
+            
             repos1.Delete(appeal2);
         }
     }

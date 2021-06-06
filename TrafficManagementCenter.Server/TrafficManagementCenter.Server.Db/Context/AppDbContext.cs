@@ -31,8 +31,8 @@ namespace TrafficManagementCenter.Server.Db.Context
         }
 
         public DbSet<Appeal> Appeal { get; set; }
-        public DbSet<SubtypeAppeal> SubtypeAppeals { get; set; }
-        public DbSet<TypeAppeal> TypeAppeal { get; set; }
-        public DbSet<AppealClass> ClassAppeal { get; set; }
+        public DbSet<AppealSubtype> SubtypeAppeals { get; set; }
+        public DbSet<AppealType> TypeAppeal { get; set; }
+        public DbSet<GeoPoint> GeoPoint { get; set; }
     }
 }
