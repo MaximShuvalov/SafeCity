@@ -1,18 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafficManagementCenter.Server", "TrafficManagementCenter.Server\TrafficManagementCenter.Server.csproj", "{82247DBB-ABEE-4899-94D3-93F8F4098119}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafeCity.Server", "SafeCity.Server\SafeCity.Server.csproj", "{82247DBB-ABEE-4899-94D3-93F8F4098119}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafficManagementCenter.Server.Tests", "TrafficManagementCenter.Server.Tests\TrafficManagementCenter.Server.Tests.csproj", "{A78FC37C-982E-42A0-850D-A4F3EE48A54B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafeCity.Server.Tests", "SafeCity.Server.Tests\SafeCity.Server.Tests.csproj", "{A78FC37C-982E-42A0-850D-A4F3EE48A54B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{A041A6AD-B84F-452C-8C6B-A381F0A7FDB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafficManagementCenter.Server.Db", "TrafficManagementCenter.Server.Db\TrafficManagementCenter.Server.Db.csproj", "{4A48056D-38EE-4BDD-BC74-C09C3AAE915F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafeCity.Server.Db", "SafeCity.Server.Db\SafeCity.Server.Db.csproj", "{4A48056D-38EE-4BDD-BC74-C09C3AAE915F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafficManagementCenter.Server.Db.Tests", "TrafficManagementCenter.Server.Db.Tests\TrafficManagementCenter.Server.Db.Tests.csproj", "{C25BD1ED-64E0-4597-91F1-0199476C6710}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafeCity.Server.Db.Tests", "SafeCity.Server.Db.Tests\SafeCity.Server.Db.Tests.csproj", "{C25BD1ED-64E0-4597-91F1-0199476C6710}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafficManagementCenter.Server.Model.Tests", "TrafficManagementCenter.Server.Model.Tests\TrafficManagementCenter.Server.Model.Tests.csproj", "{6CB7F9BD-2E8C-4B08-9933-4AED512E0995}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafeCity.Server.Model.Tests", "SafeCity.Server.Model.Tests\SafeCity.Server.Model.Tests.csproj", "{6CB7F9BD-2E8C-4B08-9933-4AED512E0995}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafficManagementCenter.UI", "TrafficManagementCenter.UI\TrafficManagementCenter.UI.csproj", "{D682EA16-75D2-437B-BB09-AAF4FB987A6C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafeCity.UI", "SafeCity.UI\SafeCity.UI.csproj", "{D682EA16-75D2-437B-BB09-AAF4FB987A6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
