@@ -20,6 +20,9 @@ namespace SafeCity.Server.Db.Repositories
 
         public Appeal Get(long id) => _context.Appeal.Include(o => o.AppealSubtype)
             .FirstOrDefault(p => p.Key.Equals(id));
+        
+        public Appeal Get(Appeal appeal) => _context.Appeal.Include(o => o.AppealSubtype)
+            .FirstOrDefault(p => p.Text.Equals(appeal.Text) && p.Email.Equals(appeal.Email));
 
         public async Task<IEnumerable<Appeal>> GetEntities() => await Task.Run(() =>
         {

@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SafeCity.EmailSender.IoC;
 using SafeCity.Server.Db.Context;
 using SafeCity.Server.Db.DI;
 
@@ -26,9 +27,10 @@ namespace SafeCity.Server
             services.AddCors();
             services.AddControllers();
             services.AddDbContext<AppDbContext>(
-            options => options.UseNpgsql(connectionDb)
+                options => options.UseNpgsql(connectionDb)
             );
             services.AddDb();
+            services.AddEmailSender();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,9 +45,9 @@ namespace SafeCity.Server
 
             app.UseCors(builder =>
                 builder.AllowAnyHeader()
-                .AllowAnyMethod()
-                .SetIsOriginAllowed(origin => true) // allow any origin
-                .AllowCredentials()
+                    .AllowAnyMethod()
+                    .SetIsOriginAllowed(origin => true) // allow any origin
+                    .AllowCredentials()
             );
 
             app.UseRouting();

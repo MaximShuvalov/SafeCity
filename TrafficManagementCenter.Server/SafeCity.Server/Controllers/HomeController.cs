@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Model;
+using SafeCity.EmailSender;
 using SafeCity.Server.Db.Context;
 using SafeCity.Server.Db.Extensions;
 using SafeCity.Server.Db.Factory;
@@ -16,11 +17,13 @@ namespace SafeCity.Server.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IUnitOfWork _uow;
+        private readonly IEmailSenderService _emailSenderService;
 
-        public CitizensAppealsController(AppDbContext context, IUnitOfWork uow)
+        public CitizensAppealsController(AppDbContext context, IUnitOfWork uow, IEmailSenderService emailSenderService)
         {
             _context = context;
             _uow = uow;
+            _emailSenderService = emailSenderService;
         }
 
         [HttpGet("ping")]
@@ -51,16 +54,26 @@ namespace SafeCity.Server.Controllers
         }
 
         [HttpPost("addappeal")]
-        public async Task<IActionResult> AddAppeal([FromBody] Appeal appeal, [FromQuery] string nameClass,
-            [FromQuery] string nameSubtype)
+        public async Task<IActionResult> AddAppeal([FromBody] Appeal appeal, [FromQuery] string nameSubtype)
         {
+            Appeal createdAppeal = null;
             using (_uow)
             {
                 await ((AppealRepository) _uow.GetRepositories<Appeal>()).Add(appeal, nameSubtype);
+                createdAppeal = ((AppealRepository) _uow.GetRepositories<Appeal>()).Get(appeal);
                 _uow.Commit();
             }
 
+            if (createdAppeal != null)
+                await SendEmail(createdAppeal);
+
             return Ok();
+        }
+
+        private async Task SendEmail(Appeal appeal)
+        {
+            var textEmailMessage = $"Спасибо! Ваше обращение{appeal.Key} принято.";
+            await _emailSenderService.SendAsync(textEmailMessage, appeal.Email, "Безопасный город");
         }
 
         [HttpGet("alltypes")]
