@@ -19,7 +19,7 @@ jobs:
         dotnet-version: 5.0.x
     - name: Restore dependencies
       run: dotnet restore
-      working-directory: ./TrafficManagementCenter.Server
+      working-directory: ./SafeCity
     - name: Build
       run: dotnet build --no-restore
-      working-directory: ./TrafficManagementCenter.Server
+      working-directory: ./SafeCity
