@@ -11,7 +11,7 @@ namespace SafeCity.EmailSender.Services
         {
             var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetParent(AppContext.BaseDirectory).FullName)
-                .AddJsonFile("appsettings.json", false).Build();
+                .AddJsonFile("appsettingsEmailSender.json", false).Build();
             var settings = new EmailSenderSettings();
             config.Bind(settings);
             return settings;
