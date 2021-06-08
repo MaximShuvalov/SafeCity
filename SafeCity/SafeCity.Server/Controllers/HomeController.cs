@@ -83,13 +83,6 @@ namespace SafeCity.Server.Controllers
                 return Ok(await _uow.GetRepositories<AppealType>().GetEntities());
         }
 
-        [HttpGet("alltypes")]
-        public async Task<IActionResult> GetAllClassesAppeal()
-        {
-            using (_uow)
-                return Ok(await _uow.GetRepositories<AppealType>().GetEntities());
-        }
-
         [HttpGet("subtypesbytype")]
         public async Task<IActionResult> GetSubtypeByTypeAppeal(string nameType)
         {

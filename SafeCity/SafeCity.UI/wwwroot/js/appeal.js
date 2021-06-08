@@ -1,4 +1,4 @@
-const urlCategory = ''
+const urlCategory = 'http://localhost:8070/api/alltypes'
 
 const cateagoryAppeal = document.getElementById('сategoryAppeal');
 
@@ -21,7 +21,7 @@ fetchAllCategory.then(function(response) {
 
 function changeOption(){
   let option = typeSelect.options[typeSelect.selectedIndex];
-  let urlSubType  = new URL('http://localhost:8070/api/citizens/subtypesbytype?');
+  let urlSubType  = new URL('http://localhost:8070/api/subtypesbytype?');
   let params = {nameType:option.text};
   urlSubType.search = new URLSearchParams(params).toString();
   let myFethcSubTypes = fetch(urlSubType);
