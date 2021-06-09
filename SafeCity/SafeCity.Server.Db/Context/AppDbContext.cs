@@ -27,7 +27,7 @@ namespace SafeCity.Server.Db.Context
                 .SetBasePath(Directory.GetParent(AppContext.BaseDirectory).FullName)
                 .AddJsonFile("appsettings.json", false)
                 .Build();
-            optionsBuilder.UseNpgsql(config.GetConnectionString("ConnectionDb"));
+            optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("DB_CONNECTION_STRING"));
         }
 
         public DbSet<Appeal> Appeal { get; set; }

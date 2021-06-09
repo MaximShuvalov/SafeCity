@@ -15,7 +15,7 @@ namespace SafeCity.Server.Db.Context
             .AddJsonFile("appsettings.json", false)
             .Build();
             var builder = new DbContextOptionsBuilder<AppDbContext>();
-            builder.UseNpgsql(config.GetConnectionString("ConnectionDb"));
+            builder.UseNpgsql(Environment.GetEnvironmentVariable("DB_CONNECTION_STRING"));
             return new AppDbContext(builder.Options);
         }
     }
