@@ -1,0 +1,27 @@
+version: '3.4'
+
+services:
+  safecityserver:
+    image: mshuvalov/safecity:latest
+    depends_on:
+      - "postgres_image"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8090:8090'     
+  
+  postgres_image:
+    image: postgres:latest
+    ports:
+      - '5432:5432'
+    restart: always
+    volumes:
+      - db_volume:/var/lib/postgresql/data
+      - ./dbscripts/seed.sql :/docker-entrypoint-initdb.d/seed.sql
+    environment:
+      POSTGRES_USER: "safecityuser"
+      POSTGRES_PASSWORD: "safecityuser"
+      POSTGRES_DB: "safecitydb"
+volumes:
+  db_volume:

@@ -12,13 +12,13 @@ namespace SafeCity.Server.Db.Context
             : base(options)
         {
             //Database.EnsureCreated();
-            //Database.Migrate();
+            Database.Migrate();
         }
 
         public AppDbContext()
         {
             //Database.EnsureDeleted();
-            //Database.EnsureCreated();
+            Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
