@@ -3,7 +3,7 @@ version: '3.4'
 services:
   db:
     image: postgres:11.4-alpine
-    container_name: postgres
+    container_name: postgres_safecity
     ports:
      - 5432:5432
     volumes:
@@ -15,11 +15,11 @@ services:
       PGDATA: /var/lib/postgresql/data/pgdata
     restart: always
   app:
-    image: mshuvalov/safecity:latest
+    image: mshuvalov/safecity_server:latest
     container_name: application
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.server
     ports:
       - 8090:8090
     environment:
@@ -29,7 +29,7 @@ services:
     links:
       - db
   client_app:
-    image: mshuvalov/safecity:latest
+    image: mshuvalov/safecity_client:latest
     container_name: client_application
     build:
       context: .
@@ -37,8 +37,6 @@ services:
     ports:
       - 8080:8080
     restart: always
-    links:
-      - app
   nginx:
     image: nginx:1.17.2-alpine
     container_name: nginx
