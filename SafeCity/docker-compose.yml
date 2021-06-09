@@ -33,7 +33,7 @@ services:
     container_name: client_application
     build:
       context: .
-      dockerfile: SafeCity.UI/Dockerfile
+      dockerfile: Dockerfile.client
     ports:
       - 8080:8080
     restart: always
