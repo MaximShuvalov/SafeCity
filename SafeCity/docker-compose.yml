@@ -28,6 +28,17 @@ services:
     restart: always
     links:
       - db
+  client_app:
+    image: mshuvalov/safecity:latest
+    container_name: client_application
+    build:
+      context: .
+      dockerfile: SafeCity.UI/Dockerfile
+    ports:
+      - 8080:8080
+    restart: always
+    links:
+      - app
   nginx:
     image: nginx:1.17.2-alpine
     container_name: nginx
