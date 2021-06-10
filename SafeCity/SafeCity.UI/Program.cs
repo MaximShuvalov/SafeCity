@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,8 +19,11 @@ namespace SafeCity.UI
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>();
-                    webBuilder.UseUrls("http://localhost:8080/");
+                .ConfigureWebHostDefaults(webBuilder => {
+                    webBuilder.UseKestrel();
+                    webBuilder.UseStartup<Startup>();
+                    webBuilder.UseContentRoot (Directory.GetCurrentDirectory());
+                    webBuilder.UseUrls("http://localhost:7070/");
                 });
     }
 }

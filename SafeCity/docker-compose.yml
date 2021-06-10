@@ -28,21 +28,3 @@ services:
     restart: always
     links:
       - db
-  client_app:
-    image: mshuvalov/safecity_client:latest
-    container_name: client_application
-    build:
-      context: .
-      dockerfile: Dockerfile.client
-    ports:
-      - 8080:8080
-    restart: always
-  nginx:
-    image: nginx:1.17.2-alpine
-    container_name: nginx
-    volumes:
-     - ./default.conf:/etx/nginx/conf.d/default.conf
-    links:
-      - app
-    ports:
-      - 80:80

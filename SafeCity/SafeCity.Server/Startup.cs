@@ -45,14 +45,9 @@ namespace SafeCity.Server
 
             app.UseHttpsRedirection();
 
-            app.UseCors(builder =>
-                builder.AllowAnyHeader()
-                    .AllowAnyMethod()
-                    .SetIsOriginAllowed(origin => true) // allow any origin
-                    .AllowCredentials()
-            );
-
             app.UseRouting();
+
+            app.UseCors(builder => builder.AllowAnyOrigin());
 
             app.UseAuthorization();
 
