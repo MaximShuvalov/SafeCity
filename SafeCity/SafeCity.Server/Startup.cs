@@ -26,7 +26,14 @@ namespace SafeCity.Server
         {
             //string connectionDb = Configuration.GetConnectionString("ConnectionDb");
             string connectionDb = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
-            services.AddCors();
+            
+            services.AddCors(options => options.AddPolicy("ApiCorsPolicy", builder =>
+            {
+                builder.WithOrigins("http://localhost:7070").AllowAnyMethod().AllowAnyHeader();
+            }));
+
+            services.AddMvc();
+            
             services.AddControllers();
             services.AddDbContext<AppDbContext>(
                 options => options.UseNpgsql(connectionDb)
@@ -46,10 +53,12 @@ namespace SafeCity.Server
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
-            app.UseCors(builder => builder.AllowAnyOrigin());
-
+            
             app.UseAuthorization();
+            
+            app.UseCors("ApiCorsPolicy");
+            
+            app.UseMvc();
 
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
