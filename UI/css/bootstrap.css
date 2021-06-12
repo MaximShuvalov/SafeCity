@@ -5793,8 +5793,7 @@ textarea.form-control-lg {
 .carousel-control-prev,
 .carousel-control-next {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  top: 12rem;
   z-index: 1;
   display: flex;
   align-items: center;
@@ -5860,7 +5859,6 @@ textarea.form-control-lg {
 .carousel-indicators {
   position: absolute;
   right: 0;
-  bottom: 0;
   left: 0;
   z-index: 2;
   display: flex;

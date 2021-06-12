@@ -78,3 +78,22 @@ font-weight: bold;
     color: white;
 }
 
+
+
+.carousel {
+    height: 500px !important;
+  }
+
+.carousel-inner img {
+height: 400px !important;
+margin: 0 auto;
+}
+
+.carousel-indicators li {
+border-color: #000;
+}
+
+.carousel-indicators .active {
+background-color: #000;
+}
+
