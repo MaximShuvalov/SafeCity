@@ -24,16 +24,14 @@ namespace SafeCity.Server
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //string connectionDb = Configuration.GetConnectionString("ConnectionDb");
-            string connectionDb = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
+            string connectionDb = Configuration.GetConnectionString("ConnectionDb");
+            //string connectionDb = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
             
             services.AddCors(options => options.AddPolicy("ApiCorsPolicy", builder =>
             {
-                builder.WithOrigins("http://localhost:7070").AllowAnyMethod().AllowAnyHeader();
+                builder.WithOrigins("http://localhost:9070").AllowAnyMethod().AllowAnyHeader();
             }));
 
-            services.AddMvc();
-            
             services.AddControllers();
             services.AddDbContext<AppDbContext>(
                 options => options.UseNpgsql(connectionDb)
@@ -50,15 +48,20 @@ namespace SafeCity.Server
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
+
+            app.UseCors(builder =>
+                builder.AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .SetIsOriginAllowed(origin => true) // allow any origin
+                    .AllowCredentials()                 
+            );
 
             app.UseRouting();
             
             app.UseAuthorization();
             
             app.UseCors("ApiCorsPolicy");
-            
-            app.UseMvc();
 
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {

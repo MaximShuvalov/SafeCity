@@ -41,6 +41,13 @@ namespace SafeCity.Client
             }
 
             app.UseHttpsRedirection();
+            var options = new DefaultFilesOptions();
+                options.DefaultFileNames.Clear();
+                options.DefaultFileNames.Add(@"wwwroot/index.html");
+                //options.DefaultFileNames.Add(@"wwwroot/apeal.html");
+                app.UseDefaultFiles(options);
+                app.UseStaticFiles();
+
             app.UseStaticFiles();
 
             app.UseRouting();

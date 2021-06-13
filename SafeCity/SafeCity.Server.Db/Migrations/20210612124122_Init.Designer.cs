@@ -9,7 +9,7 @@ using SafeCity.Server.Db.Context;
 namespace SafeCity.Server.Db.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210611093220_Init")]
+    [Migration("20210612124122_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,6 +27,9 @@ namespace SafeCity.Server.Db.Migrations
                         .HasColumnType("bigint")
                         .UseIdentityByDefaultColumn();
 
+                    b.Property<string>("Address")
+                        .HasColumnType("text");
+
                     b.Property<long>("AppealTypeId")
                         .HasColumnType("bigint");
 
@@ -36,8 +39,8 @@ namespace SafeCity.Server.Db.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("text");
 
-                    b.Property<long>("GeoPointId")
-                        .HasColumnType("bigint");
+                    b.Property<string>("Phone")
+                        .HasColumnType("text");
 
                     b.Property<long>("SubtypeId")
                         .HasColumnType("bigint");
@@ -48,8 +51,6 @@ namespace SafeCity.Server.Db.Migrations
                     b.HasKey("Key");
 
                     b.HasIndex("AppealTypeId");
-
-                    b.HasIndex("GeoPointId");
 
                     b.HasIndex("SubtypeId");
 
@@ -177,35 +178,11 @@ namespace SafeCity.Server.Db.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Model.GeoPoint", b =>
-                {
-                    b.Property<long>("Key")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .UseIdentityByDefaultColumn();
-
-                    b.Property<float>("Lat")
-                        .HasColumnType("real");
-
-                    b.Property<float>("Lng")
-                        .HasColumnType("real");
-
-                    b.HasKey("Key");
-
-                    b.ToTable("GeoPoint");
-                });
-
             modelBuilder.Entity("Model.Appeal", b =>
                 {
                     b.HasOne("Model.AppealType", "AppealType")
                         .WithMany()
                         .HasForeignKey("AppealTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Model.GeoPoint", "GeoPoint")
-                        .WithMany()
-                        .HasForeignKey("GeoPointId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -218,8 +195,6 @@ namespace SafeCity.Server.Db.Migrations
                     b.Navigation("AppealSubtype");
 
                     b.Navigation("AppealType");
-
-                    b.Navigation("GeoPoint");
                 });
 
             modelBuilder.Entity("Model.AppealSubtype", b =>

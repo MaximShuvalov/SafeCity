@@ -20,7 +20,7 @@ namespace SafeCity.Server.Db.Repositories
 
         public Appeal Get(long id) => _context.Appeal.Include(o => o.AppealSubtype)
             .FirstOrDefault(p => p.Key.Equals(id));
-        
+
         public Appeal Get(Appeal appeal) => _context.Appeal.Include(o => o.AppealSubtype)
             .FirstOrDefault(p => p.Text.Equals(appeal.Text) && p.Email.Equals(appeal.Email));
 
@@ -42,16 +42,18 @@ namespace SafeCity.Server.Db.Repositories
                 throw new ArgumentException("Appeal is null");
             _context.Appeal.Remove(entity);
         }
-        
+
         public async Task Add(Appeal appeal, string nameSubtypeAppeal)
         {
             var subtypeAppealRepository = RepositoryFactory<AppealSubtype>.Create(_context);
-            
-            var subtypeAppeal = (await subtypeAppealRepository.GetEntities())
-                .FirstOrDefault(p => p.Name.Equals(nameSubtypeAppeal));
+
+            var subtypeAppeals = await subtypeAppealRepository.GetEntities();
+
+            var subtypeAppeal = subtypeAppeals.FirstOrDefault(p => p.Name.Equals(nameSubtypeAppeal));
             if (subtypeAppeal is null)
                 throw new Exception("The database does not contain the given object");
             appeal.SubtypeId = subtypeAppeal.Key;
+            appeal.AppealTypeId = subtypeAppeal.TypesId;
 
             await Add(appeal);
         }

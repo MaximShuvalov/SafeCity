@@ -26,12 +26,13 @@ namespace SafeCity.Server.Db.Context
                 .SetBasePath(Directory.GetParent(AppContext.BaseDirectory).FullName)
                 .AddJsonFile("appsettings.json", false)
                 .Build();
-            optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("DB_CONNECTION_STRING"));
+            //optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("DB_CONNECTION_STRING"));
+            optionsBuilder.UseNpgsql(config.GetConnectionString("ConnectionDb"));
         }
-        
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<AppealType>().HasData( new List<AppealType>()
+            modelBuilder.Entity<AppealType>().HasData(new List<AppealType>()
             {
                 new AppealType()
                 {
@@ -119,6 +120,6 @@ namespace SafeCity.Server.Db.Context
         public DbSet<Appeal> Appeal { get; set; }
         public DbSet<AppealSubtype> SubtypeAppeals { get; set; }
         public DbSet<AppealType> TypeAppeal { get; set; }
-        public DbSet<GeoPoint> GeoPoint { get; set; }
+        //cpublic DbSet<GeoPoint> GeoPoint { get; set; }
     }
 }

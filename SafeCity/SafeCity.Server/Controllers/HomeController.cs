@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Model;
@@ -39,12 +41,12 @@ namespace SafeCity.Server.Controllers
                 return Ok(await _uow.GetRepositories<Appeal>().GetEntities());
         }
 
-        [HttpGet("allpoints")]
-        public async Task<IActionResult> GetAllPoints()
-        {
-            using (_uow)
-                return Ok(await _uow.GetRepositories<GeoPoint>().GetEntities());
-        }
+        // [HttpGet("allpoints")]
+        // public async Task<IActionResult> GetAllPoints()
+        // {
+        //     using (_uow)
+        //         return Ok(await _uow.GetRepositories<GeoPoint>().GetEntities());
+        // }
 
         [HttpGet("allbyemail")]
         public async Task<IActionResult> GetAllAppealsByEmail(string email)
@@ -56,6 +58,7 @@ namespace SafeCity.Server.Controllers
         [HttpPost("addappeal")]
         public async Task<IActionResult> AddAppeal([FromBody] Appeal appeal, [FromQuery] string nameSubtype)
         {
+            Console.WriteLine($"Подтип '{nameSubtype}'");
             Appeal createdAppeal = null;
             using (_uow)
             {
@@ -64,8 +67,10 @@ namespace SafeCity.Server.Controllers
                 _uow.Commit();
             }
 
-            if (createdAppeal != null)
-                await SendEmail(createdAppeal);
+            Console.WriteLine("Обращение создано");
+
+            //if (createdAppeal != null)
+            //    await SendEmail(createdAppeal);
 
             return Ok();
         }
@@ -79,8 +84,20 @@ namespace SafeCity.Server.Controllers
         [HttpGet("alltypes")]
         public async Task<IActionResult> GetAllTypesAppeal()
         {
+            Console.WriteLine("Принят запрос на получение классов обращений");
             using (_uow)
                 return Ok(await _uow.GetRepositories<AppealType>().GetEntities());
+        }
+
+        [HttpGet("classbyname")]
+        public async Task<IActionResult> GetAllTypesAppeal(string nameClass)
+        {
+            Console.WriteLine("Принят запрос на получение классов обращений");
+            using (_uow)
+            {
+                var allClasses = await _uow.GetRepositories<AppealType>().GetEntities();
+                return Ok(allClasses.FirstOrDefault(p=> p.Name.Equals(nameClass)));
+            }
         }
 
         [HttpGet("subtypesbytype")]

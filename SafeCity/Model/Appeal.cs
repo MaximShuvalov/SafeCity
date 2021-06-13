@@ -14,12 +14,18 @@ namespace Model
         
         [ForeignKey("AppealType")]
         public long AppealTypeId { get; set; }
+        
         public AppealType AppealType { get; set; }
         public string Email { get; set; }
         public string Text { get; set; }
-        [ForeignKey("GeoPoint")]
-        public long GeoPointId { get; set; }
-        public GeoPoint GeoPoint { get; set; }
+        
+        public string Phone { get; set; }
+        
+        public string Address { get; set; }
+        
+        //[ForeignKey("GeoPoint")]
+        //public long GeoPointId { get; set; }
+        //public GeoPoint GeoPoint { get; set; }
         public string Attachment { get; set; }
     }
 }

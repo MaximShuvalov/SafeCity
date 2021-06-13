@@ -8,20 +8,6 @@ namespace SafeCity.Server.Db.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "GeoPoint",
-                columns: table => new
-                {
-                    Key = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Lat = table.Column<float>(type: "real", nullable: false),
-                    Lng = table.Column<float>(type: "real", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_GeoPoint", x => x.Key);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "TypeAppeal",
                 columns: table => new
                 {
@@ -66,18 +52,13 @@ namespace SafeCity.Server.Db.Migrations
                     AppealTypeId = table.Column<long>(type: "bigint", nullable: false),
                     Email = table.Column<string>(type: "text", nullable: true),
                     Text = table.Column<string>(type: "text", nullable: true),
-                    GeoPointId = table.Column<long>(type: "bigint", nullable: false),
+                    Phone = table.Column<string>(type: "text", nullable: true),
+                    Address = table.Column<string>(type: "text", nullable: true),
                     Attachment = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Appeal", x => x.Key);
-                    table.ForeignKey(
-                        name: "FK_Appeal_GeoPoint_GeoPointId",
-                        column: x => x.GeoPointId,
-                        principalTable: "GeoPoint",
-                        principalColumn: "Key",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Appeal_SubtypeAppeals_SubtypeId",
                         column: x => x.SubtypeId,
@@ -125,11 +106,6 @@ namespace SafeCity.Server.Db.Migrations
                 column: "AppealTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Appeal_GeoPointId",
-                table: "Appeal",
-                column: "GeoPointId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Appeal_SubtypeId",
                 table: "Appeal",
                 column: "SubtypeId");
@@ -144,9 +120,6 @@ namespace SafeCity.Server.Db.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Appeal");
-
-            migrationBuilder.DropTable(
-                name: "GeoPoint");
 
             migrationBuilder.DropTable(
                 name: "SubtypeAppeals");
