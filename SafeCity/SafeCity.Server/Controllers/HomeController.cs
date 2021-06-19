@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Model;
 using SafeCity.EmailSender;
+using SafeCity.FileStorage.Core;
 using SafeCity.Server.Db.Context;
 using SafeCity.Server.Db.Extensions;
-using SafeCity.Server.Db.Factory;
 using SafeCity.Server.Db.Repositories;
 using SafeCity.Server.Db.UnitOfWork;
 
@@ -20,12 +20,15 @@ namespace SafeCity.Server.Controllers
         private readonly AppDbContext _context;
         private readonly IUnitOfWork _uow;
         private readonly IEmailSenderService _emailSenderService;
+        private readonly IFileStorageService _fileStorageService;
 
-        public CitizensAppealsController(AppDbContext context, IUnitOfWork uow, IEmailSenderService emailSenderService)
+        public CitizensAppealsController(AppDbContext context, IUnitOfWork uow, IEmailSenderService emailSenderService,
+            IFileStorageService fileStorageService)
         {
             _context = context;
             _uow = uow;
             _emailSenderService = emailSenderService;
+            _fileStorageService = fileStorageService;
         }
 
         [HttpGet("ping")]
@@ -59,6 +62,8 @@ namespace SafeCity.Server.Controllers
         public async Task<IActionResult> AddAppeal([FromBody] Appeal appeal, [FromQuery] string nameSubtype)
         {
             Console.WriteLine($"Подтип '{nameSubtype}'");
+            var attachmentPath = await _fileStorageService.SaveAttachment(appeal.Attachment);
+            appeal.AttachmentPath = attachmentPath;
             Appeal createdAppeal = null;
             using (_uow)
             {
@@ -96,7 +101,7 @@ namespace SafeCity.Server.Controllers
             using (_uow)
             {
                 var allClasses = await _uow.GetRepositories<AppealType>().GetEntities();
-                return Ok(allClasses.FirstOrDefault(p=> p.Name.Equals(nameClass)));
+                return Ok(allClasses.FirstOrDefault(p => p.Name.Equals(nameClass)));
             }
         }
 
