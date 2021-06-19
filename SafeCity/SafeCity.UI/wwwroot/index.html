@@ -29,7 +29,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " href="apeal.html">
-                            <div class="linc-color">Решение проблемы</div>
+                            <div class="linc-color">Обращения граждан</div>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -63,7 +63,7 @@
                     <p style="color: red; font-weight: 700; font-size: 30px;">45</p>
                 </div>
                 <div class="stat--text">
-                    <p>Проблемы безопасности</p>
+                    <p>Безопасность на дорогах</p>
                 </div>
             </dvi>
             <dvi class="stat--item">
@@ -71,7 +71,7 @@
                     <p style="color: rgb(212, 193, 19); font-weight: 700; font-size: 30px;">30</p>
                 </div>
                 <div class="stat--text">
-                    <p>Проблемы градоустройства</p>
+                    <p>Комфортность проживания</p>
                 </div>
             </dvi>
             <dvi class="stat--item">
@@ -96,6 +96,13 @@
             <dvi class="feedback--item">
                 <button type="button" onClick="location.href='apeal.html'" class="btn btn-warning">Проблемы градоустройства</button>
             </dvi>
+
+            <script>
+                function setAppealClassLocalStorage(nameClass) {
+                    localStorage.setItem('appealClass', nameClass);
+                }
+            </script>
+
         </div>
     </div>
 
@@ -104,7 +111,7 @@
     </div>
 
     <div class="container-lg">
-        <h3 class="made text-color">Нами сделано:</h3>
+        <h3 class="made text-color">Уже решено:</h3>
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
