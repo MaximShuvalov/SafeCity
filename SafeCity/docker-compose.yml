@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+  db:
+    image: postgres:11.4-alpine
+    container_name: postgres_safecity
+    ports:
+     - 5432:5432
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data/pgdata
+    environment:
+      POSTGRES_USER: safecityuser
+      POSTGRES_PASSWORD: safecityuser
+      POSTGRES_DB: safecitydb
+      PGDATA: /var/lib/postgresql/data/pgdata
+    restart: always
+  app:
+    image: mshuvalov/safecity_server:latest
+    container_name: application
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    ports:
+      - 8090:8090
+    environment:
+        DB_CONNECTION_STRING: "host=db;port=5432;database=safecitydb;username=safecityuser;password=safecityuser"
+        POSTGRES_HOST: db
+    restart: always
+    links:
+      - db
