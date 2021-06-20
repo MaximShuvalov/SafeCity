@@ -15,7 +15,7 @@ namespace SafeCity.FileStorage.Impl
             _imageHandler = imageHandler;
         }
 
-        public async Task<string> SaveAttachment(byte[] image)
+        public async Task<string> SaveAttachment(string image)
         {
             var createdImage = await _imageHandler.CreateImageFromBytes(image);
             createdImage = await _imageHandler.SetDefaultSizeImage(createdImage);

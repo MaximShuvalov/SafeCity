@@ -25,6 +25,6 @@ namespace Model
         //public GeoPoint GeoPoint { get; set; }
         public string AttachmentPath { get; set; }
 
-        public byte[] Attachment { get; set; }
+        public string Attachment { get; set; }
     }
 }

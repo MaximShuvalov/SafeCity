@@ -4,6 +4,6 @@ namespace SafeCity.FileStorage.Core
 {
     public interface IFileStorageService
     {
-        public Task<string> SaveAttachment(byte[] image);
+        public Task<string> SaveAttachment(string image);
     }
 }

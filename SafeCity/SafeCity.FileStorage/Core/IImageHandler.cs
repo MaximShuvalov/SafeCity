@@ -5,7 +5,7 @@ namespace SafeCity.FileStorage.Core
 {
     public interface IImageHandler
     {
-        public Task<Image> CreateImageFromBytes(byte[] imageBytes);
+        public Task<Image> CreateImageFromBytes(string imageBytes);
 
         public Task<Image> SetDefaultSizeImage(Image convertingImage);
     }
