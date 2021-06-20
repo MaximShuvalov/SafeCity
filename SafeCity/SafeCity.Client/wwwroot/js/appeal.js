@@ -30,7 +30,8 @@ function postAppeal(){
         "email" : document.getElementById("input_email").value,
         "text" : document.getElementById("input_message").value,
         "phone" : document.getElementById("input_phone").value,
-        "address" : document.getElementById("input_address").value
+        "address" : document.getElementById("input_address").value,
+        "attachment" : document.getElementById("attachment").value
     };
 
     fetch(urlSubType, {
