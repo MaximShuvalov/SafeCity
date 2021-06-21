@@ -59,16 +59,16 @@ async function postAppeal() {
         redirect: 'follow',
         referrerPolicy: 'no-referrer',
         body: JSON.stringify(data)
-    });
-    /*.then(res=>res.text())
+    })
+    .then(res=>res.text())
             .then(res => {
                 console.log('Done', res);
                 document.location.href = "https://bkg.sibadi.org";
             })
             .catch(e => {
                 document.location.href = "https://bkg.sibadi.org";
-                console.log(e);});*/
-    //document.location.href = "https://bkg.sibadi.org";
+                console.log(e);});
+    document.location.href = "https://bkg.sibadi.org";
 }
 
 const readUploadedFileAsBinary = (inputFile) => {
