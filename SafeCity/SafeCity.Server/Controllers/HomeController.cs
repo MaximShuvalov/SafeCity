@@ -62,8 +62,14 @@ namespace SafeCity.Server.Controllers
         public async Task<IActionResult> AddAppeal([FromBody] Appeal appeal, [FromQuery] string nameSubtype)
         {
             Console.WriteLine($"Подтип '{nameSubtype}'");
-            var attachmentPath = await _fileStorageService.SaveAttachment(appeal.Attachment);
-            appeal.AttachmentPath = attachmentPath;
+            
+            if (!string.IsNullOrEmpty(appeal.Attachment))
+            {
+                var attachmentPath = await _fileStorageService.SaveAttachment(appeal.Attachment);
+                appeal.AttachmentPath = attachmentPath;
+                appeal.Attachment = String.Empty;
+            }
+
             Appeal createdAppeal = null;
             using (_uow)
             {

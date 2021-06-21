@@ -7,7 +7,7 @@ namespace SafeCity.FileStorage.Impl
 {
     public class FileStorageService : IFileStorageService
     {
-        private readonly string _attachmentPath = "/var/attachments";
+        private readonly string _attachmentPath = Path.Combine(Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile), "attachments");
         private readonly IImageHandler _imageHandler;
 
         public FileStorageService(IImageHandler imageHandler)
@@ -21,7 +21,8 @@ namespace SafeCity.FileStorage.Impl
             createdImage = await _imageHandler.SetDefaultSizeImage(createdImage);
             var savingPath = Path.Combine(_attachmentPath, Guid.NewGuid().ToString());
 
-            Directory.CreateDirectory(savingPath);
+            if(!Directory.Exists(savingPath))
+                Directory.CreateDirectory(savingPath);
 
             var imageFile = Path.Combine(savingPath, Guid.NewGuid() + ".jpg");
             
