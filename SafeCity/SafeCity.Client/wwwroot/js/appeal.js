@@ -28,7 +28,8 @@ async function postAppeal() {
     localStorage.clear();
     var reader = new FileReader();
 
-    var file = new Blob([document.getElementById("attachment").files[0]]);
+
+    if (document.getElementById("attachment").files.length > 0) var file = new Blob([document.getElementById("attachment").files[0]]);
 
     // при успешном завершении операции чтения
     reader.onload = (function (file) {
@@ -39,35 +40,30 @@ async function postAppeal() {
         };
     })(file);
 
-    var fileContent = await readUploadedFileAsBinary(file);
+    if (document.getElementById("attachment").files.length > 0) var fileContent = await readUploadedFileAsBinary(file);
+
     let data = {
         "email": document.getElementById("input_email").value,
         "text": document.getElementById("input_message").value,
         "phone": document.getElementById("input_phone").value,
         "address": document.getElementById("input_address").value,
-        "attachment": fileContent.split(',')[1]
+        "attachment": (document.getElementById("attachment").files.length > 0) ? fileContent.split(',')[1] : null
     };
 
-    fetch(urlSubType, {
-        method: 'POST',
-        mode: 'cors',
-        cache: 'no-cache',
-        credentials: 'same-origin',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        redirect: 'follow',
-        referrerPolicy: 'no-referrer',
-        body: JSON.stringify(data)
-    })
-    .then(res=>res.text())
-            .then(res => {
-                console.log('Done', res);
-                document.location.href = "https://bkg.sibadi.org";
-            })
-            .catch(e => {
-                document.location.href = "https://bkg.sibadi.org";
-                console.log(e);});
+    try {
+        const response = await fetch(urlSubType, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        const json = await response.json();
+        console.log('Успех:', JSON.stringify(json));
+    } catch (error) {
+        console.error('Ошибка', error);
+    }
     document.location.href = "https://bkg.sibadi.org";
 }
 

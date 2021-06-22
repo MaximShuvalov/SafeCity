@@ -26,5 +26,7 @@ namespace Model
         public string AttachmentPath { get; set; }
 
         public string Attachment { get; set; }
+        
+        public bool IsResolve { get; set; }
     }
 }

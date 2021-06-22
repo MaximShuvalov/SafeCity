@@ -18,6 +18,10 @@ namespace SafeCity.FileStorage.Impl
         public async Task<string> SaveAttachment(string image)
         {
             var createdImage = await _imageHandler.CreateImageFromBytes(image);
+
+            if (image == null)
+                return null;
+            
             createdImage = await _imageHandler.SetDefaultSizeImage(createdImage);
             var savingPath = Path.Combine(_attachmentPath, Guid.NewGuid().ToString());
 
