@@ -1,0 +1,32 @@
+.stats{
+    height: 250px;
+    &__wraper{
+        margin-top: 40px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    &__item{
+        padding: 10px 10px 20px 10px;
+        width: 250px;
+        text-align: center;
+        border: 1px solid rgb(151, 151, 151);
+        border-radius: 3px;
+    }
+    &__number{
+        font-weight: 700;
+        font-size: 30px;
+        &_road{
+           color: red; 
+        }
+        &_live{
+            color: rgb(212, 193, 19)
+        }
+        &_solved{
+            color: royalblue;
+        }
+    }
+    &__descr{
+        margin-top: 16px;
+        font-weight: bold;
+    }
+}
