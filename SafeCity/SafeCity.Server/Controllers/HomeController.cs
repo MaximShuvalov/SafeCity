@@ -81,8 +81,8 @@ namespace SafeCity.Server.Controllers
 
             Console.WriteLine("Обращение создано");
 
-            //if (createdAppeal != null)
-            //    await SendEmail(createdAppeal);
+            if (createdAppeal != null)
+                await SendEmail(createdAppeal);
 
             return Ok();
         }
