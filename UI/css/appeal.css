@@ -24,7 +24,7 @@ h1{
 }
 
 .appeal{
-    width: 600px;
+    width: 40%;
     align-items: center;
     text-align: center;
 }
@@ -123,4 +123,3 @@ h1{
 
     text-transform: uppercase;
 }
-

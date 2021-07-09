@@ -1,214 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/sliderShow.css">
-    
-
     <title>Безопасный и комфортный город</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.7.0/dist/css/uikit.min.css" />
+    <link rel="stylesheet" href="css/style.min.css">
 </head>
-
 <body>
-    <header class="header container-lg">
-        <nav class="navbar navbar-expand-md navbar-light bg-light">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-                aria-controls="navbarContent" aria-expanded="false">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-
-            <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav ms-auto mb-2">
-                    <li class="nav-item ">
-                        <a class="nav-link" href="">
-                            <div class="linc-color">Главная</div>
-                        </a>
+    <header class="header">
+		<div class="container">
+			<div class="header__menu">
+				<ul class="header__nav">
+					<li class="header__nav-item"><a href="#">Главная</a></li>
+					<li class="header__nav-item"><a href="#">Обращения граждан</a></li>
+					<li class="header__nav-item"><a href="#">Контакты</a></li>
+				</ul>
+			</div>
+            <p>ПРОЕКТ СИБИРСКОГО ГОСУДАРСТВЕННОГО АВТОМОБИЛЬНО-ДОРОЖНОГО УНИВЕРСИТЕТА (СИБАДИ)</p>
+		</div>
+    </header>
+    <section class="promo">
+        <div class="container">
+            <h1>Безопасный и комфортный город</h1>
+            <h2>Омск, Советский округ</h2>
+            <p>Проект направлен на создание комфортной и безопасной среды для проживания в городе Омске. Позволяет горожанам принять участие в жизни своего города и округа, выявить проблемы, повлиять на качество жизни, обеспечить возможности взаимодействия с государственными и муниципальными властями Омска для поиска решений и реализации гражданских инициатив на информационном, консультационном и методическом уровнях.</p>
+        </div>
+    </section>
+    <section class="stats">
+        <div class="container">
+            <div class="stats__wraper">
+                <div class="stats__item">
+                    <div class="stats__number stats__number_road">45</div>
+                    <div class="stats__descr">Безопасность на дорогах</div> 
+                    <button class="button button_road" onclick="location.href='apeal.html'">Сообщить о проблеме</button> 
+                </div>
+                <div class="stats__item">
+                    <div class="stats__number stats__number_live">30</div>
+                    <div class="stats__descr">Комфортность проживания</div>  
+                    <button class="button button_live" onclick="location.href='apeal.html'">Сообщить о проблеме</button> 
+                </div>
+                <div class="stats__item">
+                    <div class="stats__number stats__number_solved">30</div>
+                    <div class="stats__descr">Решенные проблемы</div>  
+                    <button class="button button_solved">Просмотреть список</button> 
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="map">
+        <div class="container">
+            <script type="text/javascript" charset="utf-8" async
+            src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ab02f5bb7ef00f5ce40b2b7ff25c85fcbeb539c8296cd89e973032043df5831fe&amp;width=100%&amp;height=433&amp;lang=ru_RU&amp;scroll=true">
+            </script>
+        </div>
+    </section>
+    <section class="solved">
+        <div class="container">
+            <h2>Уже решено:</h2>
+            <div class="uk-position-relative uk-visible-toggle " tabindex="-1" uk-slider="center: true; finite: true">
+                <ul class="uk-slider-items uk-grid uk-grid-match" uk-height-viewport="offset-top: true; offset-bottom: 30">
+                    <li class="uk-width-3-4 uk-light">
+                        <div class="uk-cover-container ">
+                            <img src="img/1.jpg" alt="" uk-cover>
+                            <div class="uk-position-bottom-center uk-panel"><h1>Description</h1></div>
+                        </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="">
-                            <div class="linc-color">Решение проблемы</div>
-                        </a>
+                    <li class="uk-width-3-4 uk-light">
+                        <div class="uk-cover-container">
+                            <img src="img/2.jpg" alt="" uk-cover>
+                            <div class="uk-position-bottom-center uk-panel"><h1>Description</h1></div>
+                        </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="">
-                            <div class="linc-color">Контакты</div>
-                        </a>
+                    <li class="uk-width-3-4 uk-dark">
+                        <div class="uk-cover-container">
+                            <img src="img/3.jpg" alt="" uk-cover>
+                            <div class="uk-position-bottom-center uk-panel"><h1>Description</h1></div>
+                        </div>
                     </li>
                 </ul>
-            </div>
-        </nav>
-    </header>
-
-    <div class="container-lg">
-        <p>ПРОЕКТ СИБИРСКОГО ГОСУДАРСТВЕННОГО АВТОМОБИЛЬНО-ДОРОЖНОГО УНИВЕРСИТЕТА (СИБАДИ)</p>
-    </div>
-    <div class="container-lg">
-        <h3 class="text-color">Безопасный и комфортный город</h3>
-    </div>
-    <div class="container-lg">
-        <h3 class="text-color">Омск, Советский округ</h3>
-    </div>
-    <div class="container-lg">
-        <p>Проект направлен на создание комфортной и безопасной среды для проживания в городе Омске. Позволяет горожанам
-            принять участие в жизни своего города и округа, выявить проблемы, повлиять на качество жизни, обеспечить
-            возможности взаимодействия с государственными и муниципальными властями Омска для поиска решений и
-            реализации гражданских инициатив на информационном, консультационном и методическом уровнях.</p>
-    </div>
-
-    <div class="container-lg">
-        <div class="stat">
-            <dvi class="stat--item">
-                <div class="stat--num">
-                    <p style="color: red; font-weight: 700; font-size: 30px;">45</p>
-                </div>
-                <div class="stat--text">
-                    <p>Проблемы безопасности</p>
-                </div>
-            </dvi>
-            <dvi class="stat--item">
-                <div class="stat--num">
-                    <p style="color: rgb(212, 193, 19); font-weight: 700; font-size: 30px;">30</p>
-                </div>
-                <div class="stat--text">
-                    <p>Проблемы градоустройства</p>
-                </div>
-            </dvi>
-            <dvi class="stat--item">
-                <div class="stat--num">
-                    <p style="color: royalblue; font-weight: 700; font-size: 30px;">30</p>
-                </div>
-                <div class="stat--text">
-                    <p>Решенные проблемы</p>
-                </div>
-            </dvi>
-        </div>
-    </div>
-
-    <div class="container-lg">
-        <div class="feedback">
-            <dvi class="feedback--item">
-                <p class="stat--text">Сообщить о проблеме:</p>
-            </dvi>
-            <dvi class="feedback--item">
-                <button type="button" class="btn btn-danger">Безопасность на дорогах</button>
-            </dvi>
-            <dvi class="feedback--item">
-                <button type="button" class="btn btn-warning">Проблемы градоустройства</button>
-            </dvi>
-        </div>
-    </div>
-
-    <div class="container-lg">
-        <script type="text/javascript" charset="utf-8" async
-            src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ab02f5bb7ef00f5ce40b2b7ff25c85fcbeb539c8296cd89e973032043df5831fe&amp;width=100%&amp;height=433&amp;lang=ru_RU&amp;scroll=true"></script>
-    </div>
-
-       
-       
-        <div class="wrapper">
-            <h3 class="made text-color">Нами сделано:</h3>
-            <div class="slider-container">
-                <div class="slider-track">
-                    <div class="slider-item">
-                        <div class="slider-item1-inner">
-                            <img class="slider-item_img" src="img/1.jpg" alt="">
-                            <div class="slider-item_title">
-                                <h5>Регулируемы пешеходные переходы и велодорожки</h5>
-                                <p>Здесь вы можите увидеть расположение регулируемы пешеходныйх переходов и велодорожек</p>
-                            </div>
-                            <button class="slider-item-button">Перейти</button>
-                        </div>
-                    </div>
-                    <div class="slider-item">
-                        <div class="slider-item2-inner">
-                            <img class="slider-item_img" src="img/2.jpg" alt="">
-                            <div class="slider-item_title">
-                                <h5>Парки и достопримечательности города</h5>
-                                <p>Все парки и достопримечательности города, находящиеся рядом с вами, будут отмесены на карте</p>
-                            </div>
-                            <button class="slider-item-button">Перейти</button>
-                        </div>
-                    </div>
-                    <div class="slider-item">
-                        <div class="slider-item1-inner">
-                            <img class="slider-item_img" src="img/1.jpg" alt="">
-                            <div class="slider-item_title">
-                                <h5>Регулируемы пешеходные переходы и велодорожки</h5>
-                                <p>Здесь вы можите увидеть расположение регулируемы пешеходныйх переходов и велодорожек</p>
-                            </div>
-                            <button class="slider-item-button">Перейти</button>
-                        </div>
-                    </div>
-                    <div class="slider-item">
-                        <div class="slider-item2-inner">
-                            <img class="slider-item_img" src="img/2.jpg" alt="">
-                            <div class="slider-item_title">
-                                <h5>Парки и достопримечательности города</h5>
-                                <p>Все парки и достопримечательности города, находящиеся рядом с вами, будут отмесены на карте</p>
-                            </div>
-                            <button class="slider-item-button">Перейти</button>
-                        </div>
-                    </div>
-                    <div class="slider-item">
-                        <div class="slider-item1-inner">
-                            <img class="slider-item_img" src="img/1.jpg" alt="">
-                            <div class="slider-item_title">
-                                <h5>Регулируемы пешеходные переходы и велодорожки</h5>
-                                <p>Здесь вы можите увидеть расположение регулируемы пешеходныйх переходов и велодорожек</p>
-                            </div>
-                            <button class="slider-item-button">Перейти</button>
-                        </div>
-                    </div>
-                    <div class="slider-item">
-                        <div class="slider-item2-inner">
-                            <img class="slider-item_img" src="img/2.jpg" alt="">
-                            <div class="slider-item_title">
-                                <h5>Парки и достопримечательности города</h5>
-                                <p>Все парки и достопримечательности города, находящиеся рядом с вами, будут отмесены на карте</p>
-                            </div>
-                            <button class="slider-item-button">Перейти</button>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-            <div class="slider-buttons">
-                <button class="btn-prev" ><p><i class="left"></i></p></button>
-                <button class="btn-next"><p><i class="right"></i></p></button>
+                <a class="uk-position-center-left uk-position-small uk-hidden-hover uk-light" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+                <a class="uk-position-center-right uk-position-small uk-hidden-hover uk-light" href="#" uk-slidenav-next uk-slider-item="next"></a>
             </div>
         </div>
-    
-
-    <footer class="footer">
-        <div class="container-lg">
-            <div class="footer--inner">
-                <div class="footer--item">
-                    Контакты и обращения <br>
-                    8-950-783-62-65 <br>
-                    bkg@sibadi.org 
-                </div>
-                <div class="footer--item">
-                    2021 ФГБОУ ВО «СибАДИ» <br>
-                    644080, г. Омск, пр. Мира 5
-                </div>
-                <div class="footer--item">
-                    <a style="color: white; text-decoration: none;" href=""> Техподдержка сайта <br> </a>
-                    <a style="color: white; text-decoration: none;" href=""> Карта сайта<br> </a>
-                </div>
+    </section>
+    <footer class="footer">  
+        <div class="footer__wraper">
+            <div class="footer__item">
+                Контакты и обращения <br>
+                8-950-783-62-65 <br>
+                bkg@sibadi.org 
+            </div>
+            <div class="footer__item">
+                2021 ФГБОУ ВО «СибАДИ» <br>
+                644080, г. Омск, пр. Мира 5
+            </div>
+            <div class="footer__item">
+                <a style="color: white; text-decoration: none;" href=""> Техподдержка сайта <br> </a>
+                <a style="color: white; text-decoration: none;" href=""> Карта сайта<br> </a>
             </div>
         </div>
     </footer>
-
-
-
-    <script src="js/bootstrap.js"></script>
-    <script src="js/sliderShow.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.0/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.0/dist/js/uikit-icons.min.js"></script>
 </body>
-
 </html>
