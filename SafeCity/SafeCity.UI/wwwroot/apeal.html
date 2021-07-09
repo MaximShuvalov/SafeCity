@@ -17,8 +17,7 @@
 <body>
     <header class="header container-lg">
         <nav class="navbar navbar-expand-md navbar-light bg-light">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-                aria-controls="navbarContent" aria-expanded="false">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -45,10 +44,10 @@
         </nav>
     </header>
 
-    <div class="container-lg appeal" name="feedback">
+    <form class="container-lg appeal" name="feedback" method="POST" action="">
         <div class="appeal__inner">
             <div class="appeal__title">
-                <h1>Форма обратной cвязи</h1>
+                <h1>Форма обратной звязи</h1>
             </div>
             <div class="appeal__item">
                 <select id="appealCategory" class="appeal__select">
@@ -69,12 +68,11 @@
             </div>
 
             <div class="appeal__item">
-                <input type="text" required placeholder="Введите ваше обращение" class="appeal__message"
-                    id="input_message">
+                <input type="text" required placeholder="Введите ваше обращение" class="appeal__message" id="input_message">
             </div>
 
             <div class="appeal__item">
-                <input type="file" id="attachment">
+                <input type="file">
             </div>
 
             <div class="appeal__item">
@@ -85,20 +83,17 @@
                 <button class="btn btn-primary" onclick="postAppeal()">Отправить</button>
             </div>
         </div>
-    </div>
+    </form>
 
 
     <footer class="footer">
         <div class="container-lg">
             <div class="footer--inner">
                 <div class="footer--item">
-                    Контакты и обращения <br>
-                    8-950-783-62-65 <br>
-                    bkg@sibadi.org
+                    Контакты и обращения <br> 8-950-783-62-65 <br> bkg@sibadi.org
                 </div>
                 <div class="footer--item">
-                    2021 ФГБОУ ВО «СибАДИ» <br>
-                    644080, г. Омск, пр. Мира 5
+                    2021 ФГБОУ ВО «СибАДИ» <br> 644080, г. Омск, пр. Мира 5
                 </div>
                 <div class="footer--item">
                     <a style="color: white; text-decoration: none;" href=""> Техподдержка сайта <br> </a>
