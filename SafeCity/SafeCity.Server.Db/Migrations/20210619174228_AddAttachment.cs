@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace SafeCity.Server.Db.Migrations
 {
-    public partial class Init : Migration
+    public partial class AddAttachment : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -54,7 +55,8 @@ namespace SafeCity.Server.Db.Migrations
                     Text = table.Column<string>(type: "text", nullable: true),
                     Phone = table.Column<string>(type: "text", nullable: true),
                     Address = table.Column<string>(type: "text", nullable: true),
-                    Attachment = table.Column<string>(type: "text", nullable: true)
+                    AttachmentPath = table.Column<string>(type: "text", nullable: true),
+                    Attachment = table.Column<byte[]>(type: "bytea", nullable: true)
                 },
                 constraints: table =>
                 {
