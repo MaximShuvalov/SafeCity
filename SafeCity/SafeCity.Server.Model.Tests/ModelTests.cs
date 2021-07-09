@@ -39,7 +39,7 @@ namespace SafeCity.Server.Model.Tests
             appeal.AppealSubtype = new AppealSubtype();
             appeal.Email = "test@test.ru";
             appeal.Text = "Прошу решить проблему";
-            appeal.AttachmentPath = "path/to/attachment";
+            appeal.Attachment = "path/to/attachment";
             Assert.Pass();
         }
     }

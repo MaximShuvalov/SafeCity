@@ -7,7 +7,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SafeCity.EmailSender.IoC;
-using SafeCity.FileStorage.IoC;
 using SafeCity.Server.Db.Context;
 using SafeCity.Server.Db.DI;
 
@@ -39,7 +38,6 @@ namespace SafeCity.Server
             );
             services.AddDb();
             services.AddEmailSender();
-            services.AddFileStorage();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

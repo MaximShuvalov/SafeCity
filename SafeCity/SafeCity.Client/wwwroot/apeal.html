@@ -45,10 +45,10 @@
         </nav>
     </header>
 
-    <div class="container-lg appeal" name="feedback">
+    <form class="container-lg appeal" name="feedback" method="POST" action="">
         <div class="appeal__inner">
             <div class="appeal__title">
-                <h1>Форма обратной cвязи</h1>
+                <h1>Форма обратной звязи</h1>
             </div>
             <div class="appeal__item">
                 <select id="appealCategory" class="appeal__select">
@@ -73,9 +73,9 @@
                     id="input_message">
             </div>
 
-            <div class="appeal__item">
-                <input type="file" id="attachment">
-            </div>
+            <!--<div class="appeal__item">
+                <input type="file">
+            </div>-->
 
             <div class="appeal__item">
                 <input type="checkbox" id="check"> Я согласен / cогласна на обработку персональных данных
@@ -85,7 +85,7 @@
                 <button class="btn btn-primary" onclick="postAppeal()">Отправить</button>
             </div>
         </div>
-    </div>
+    </form>
 
 
     <footer class="footer">

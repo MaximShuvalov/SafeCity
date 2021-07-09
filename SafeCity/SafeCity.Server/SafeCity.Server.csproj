@@ -16,9 +16,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Model\Model.csproj" />
-      <ProjectReference Include="..\SafeCity.Core\SafeCity.Core.csproj" />
       <ProjectReference Include="..\SafeCity.EmailSender\SafeCity.EmailSender.csproj" />
-      <ProjectReference Include="..\SafeCity.FileStorage\SafeCity.FileStorage.csproj" />
       <ProjectReference Include="..\SafeCity.Server.Db\SafeCity.Server.Db.csproj" />
     </ItemGroup>
 

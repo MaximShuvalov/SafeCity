@@ -9,5 +9,4 @@ node_modules
 .vscode
 buildArtifacts
 .vs/
-*.user
 node_modules
