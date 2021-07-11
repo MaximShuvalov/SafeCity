@@ -2,6 +2,11 @@
     position: relative;
     height: 70px;
     background-color: #f8f9fa;
+    &__wraper{
+        display: flex;
+        justify-content: space-between;
+        align-items:center;
+    }
     &__menu{
         display: flex;
         justify-content: space-between;
@@ -26,15 +31,18 @@
     a{
         font-size: 20px;
         font-weight: bold;
-        color:rgb(31, 73, 125);
+        color: $title_color;
         text-decoration: none;
         transition: all .2s;
         &:hover{
-            color: rgb(2, 36, 77);
+            color: $title_hover_color;
         }
     }
     p{
         font-weight: 400;
         margin: 0;
+    }
+    .sib-logo{
+        height: 65px;
     }
 }

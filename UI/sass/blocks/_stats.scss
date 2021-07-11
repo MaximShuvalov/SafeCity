@@ -6,11 +6,23 @@
         justify-content: space-evenly;
     }
     &__item{
-        padding: 10px 10px 20px 10px;
+        padding: 20px 20px 30px 20px;
         width: 250px;
         text-align: center;
-        border: 1px solid rgb(151, 151, 151);
-        border-radius: 3px;
+        border-radius: 7px;
+        border: 8px solid;
+        &_road{
+            border-color:#dc3546;
+        }
+        &_live{
+            border-color:#ffc107;
+        }
+        &_solved{
+            border-color:#4169e1;
+        }
+        hr{
+            margin: 10px 0;
+        }
     }
     &__number{
         font-weight: 700;

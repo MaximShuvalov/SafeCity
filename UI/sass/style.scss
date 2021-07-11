@@ -14,6 +14,7 @@ body {
 .map{
     height: 400px;
 }
+@import 'base/vars.scss';
 @import 'blocks/header';
 @import 'blocks/promo';
 @import 'blocks/stats';
