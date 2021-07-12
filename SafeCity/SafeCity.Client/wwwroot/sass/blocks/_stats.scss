@@ -1,0 +1,44 @@
+.stats{
+    height: 250px;
+    &__wraper{
+        margin-top: 40px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    &__item{
+        padding: 20px 20px 30px 20px;
+        width: 250px;
+        text-align: center;
+        border-radius: 7px;
+        border: 8px solid;
+        &_road{
+            border-color:#dc3546;
+        }
+        &_live{
+            border-color:#ffc107;
+        }
+        &_solved{
+            border-color:#4169e1;
+        }
+        hr{
+            margin: 10px 0;
+        }
+    }
+    &__number{
+        font-weight: 700;
+        font-size: 30px;
+        &_road{
+           color: red; 
+        }
+        &_live{
+            color: rgb(212, 193, 19)
+        }
+        &_solved{
+            color: royalblue;
+        }
+    }
+    &__descr{
+        margin-top: 16px;
+        font-weight: bold;
+    }
+}

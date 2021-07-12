@@ -1,0 +1,23 @@
+.container{
+    position: relative;
+    max-width: 1320px;
+    margin: 0 auto;
+}
+body {
+    height: 100%;
+    font-family: Century Gothic;
+    margin: 0;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+}
+.map{
+    height: 400px;
+}
+@import 'base/vars.scss';
+@import 'blocks/header';
+@import 'blocks/promo';
+@import 'blocks/stats';
+@import 'blocks/button';
+@import 'blocks/solved';
+@import 'blocks/footer';

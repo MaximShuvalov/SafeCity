@@ -1,0 +1,33 @@
+.button{
+    cursor: pointer;
+    line-height: 30px;
+    border-radius: 4px;
+    border: none;
+    font-weight: 400;
+    font-size: 17px;
+    padding: 0 20px 0 20px;
+    transition: all .3s;    
+    &_road{
+        color: white;
+        background-color: #dc3546;
+        &:hover{
+            background-color: #be2f3d;
+        }
+    }
+    &_live{
+        color: rgb(0, 0, 0);
+        background-color: #ffc107;
+        &:hover{
+            color: white;
+            background-color: #dda600;
+        }
+    }
+    &_solved{
+        color: white;
+        background-color: #4169e1;
+        &:hover{
+            color: white;
+            background-color: #3558c2;
+        }
+    }
+}

@@ -1,0 +1,12 @@
+.footer{
+    background-color: rgb(31, 73, 125);
+    &__wraper{
+        display: flex;
+        justify-content: center;
+    }
+    &__item{
+        margin: 30px;
+        align-items: center;
+        color: white;
+    }
+}
