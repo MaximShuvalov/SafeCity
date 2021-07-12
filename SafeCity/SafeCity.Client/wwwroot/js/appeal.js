@@ -9,7 +9,7 @@ let fetchAllCategory = fetch(urlCategory)
 fetchAllCategory.then(function(response) {
     response.text().then(function(text) {
         var sel = document.getElementById("appealCategory");
-        var options = JSON.parse(text)
+        var options = JSON.parse(text);
 
         for (var i = 0; i <= options.length - 1; i++) {
             var opt = document.createElement('option');
@@ -54,3 +54,5 @@ function postAppeal(){
             console.log(e);});
     document.location.href = "https://bkg.sibadi.org";
 }
+
+
