@@ -55,4 +55,20 @@ function postAppeal(){
     document.location.href = "https://bkg.sibadi.org";
 }
 
+//file extension validation
+document.getElementById("file").addEventListener("change", validateFile)
 
+function validateFile(){
+    const allowedExtensions =  ['jpg','jpeg','png','pdf'],
+    sizeLimit = 2000000;
+    const { name:fileName, size:fileSize } = this.files[0];
+    const fileExtension = fileName.split(".").pop();
+
+    if(!allowedExtensions.includes(fileExtension)){
+        alert("Пожалуйста, выберите файл .jpg, .jpeg, .png или .pdf расширения");
+        this.value = null;
+    }else if(fileSize > sizeLimit){
+        alert("Размер файла не должен превышать 2 МБ")
+        this.value = null;
+    }
+}
