@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/appeal.css">
-    <link rel="stylesheet" href="css/style.min.css">
-
-
     <title>Безопасный и комфортный город</title>
+    <link rel="stylesheet" href="css/style.min.css">
 </head>
 
 <body>
@@ -29,8 +23,50 @@
             </div>
 		</div>
     </header>
-
-    <form class="container-lg appeal" name="feedback" method="POST" action="">
+    <section class="appeal">
+        <div class="container">
+            <div class="appeal__title">
+                <h1>Подать обращение</h1>
+            </div>
+            <div class="appeal__content">
+                <div class="appeal__descr">Выберите категорию обращения</div>
+                <div class="appeal__item">
+                    <select id="appealCategory" class="appeal__select">
+                        <option selected="selected" value="10">Выберите категорию обращения</option>
+                    </select>
+                </div>
+                <div class="appeal__descr">Укажите адрес электронной почты, на которую придет ответ по обработке обращения</div>
+                <div class="appeal__item">
+                    <input type="email" required placeholder="Email" class="appeal__input" id="input_email">
+                </div>
+                <div class="appeal__descr">Укажите Ваш номер телефона</div>
+                <div class="appeal__item">
+                    <input type="text" required placeholder="Телефон" class="appeal__input" id="input_phone">
+                </div>    
+                <div class="appeal__descr">Укажите адрес проблемного места или ближайший к нему</div>
+                <div class="appeal__item">
+                    <input type="text" required placeholder="Адрес" class="appeal__input" id="input_address">
+                </div>    
+                <div class="appeal__descr">Опишите проблему</div>
+                <div class="appeal__item">
+                    <input type="text" required placeholder="Опишите проблему" class="appeal__message"
+                        id="input_message">
+                </div>    
+                <div class="appeal__descr">Прикрепите фотографию размером до двух МБ (.jpg, .jpeg, .png, .pdf) </div>
+                <div class="appeal__item">
+                    <input type="file" id="file">
+                </div>    
+                <div class="appeal__item">
+                    <input type="checkbox" id="check"> Я согласен / cогласна на обработку персональных данных
+                </div>    
+                <div class="appeal__item appeal__item_button">
+                    <button class="button button_appeal" onclick="postAppeal()">Отправить</button>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <!-- <form class="container-lg appeal" name="feedback" method="POST" action="">
         <div class="appeal__inner">
             <div class="appeal__title">
                 <h1>Форма обратной звязи</h1>
@@ -70,7 +106,7 @@
                 <button class="btn btn-primary" onclick="postAppeal()">Отправить</button>
             </div>
         </div>
-    </form>
+    </form> -->
     <footer class="footer">  
         <div class="footer__wraper">
             <div class="footer__item">
@@ -90,5 +126,4 @@
     </footer>
     <script src="js/appeal.js"></script>
 </body>
-
 </html>
