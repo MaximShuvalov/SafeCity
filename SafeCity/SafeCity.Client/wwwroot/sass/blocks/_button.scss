@@ -42,5 +42,12 @@
             background-color: $title_hover_color;
         }
     }
-    
+    &_header{
+        color: white;
+        background-color: $title_color;
+        &:hover{
+            color: white;
+            background-color: $title_hover_color;
+        }
+    }
 }
