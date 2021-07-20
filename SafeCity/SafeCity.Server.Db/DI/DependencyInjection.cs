@@ -12,6 +12,7 @@ namespace SafeCity.Server.Db.DI
         {
             services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();
             services.AddTransient<ITypeAppealService, TypeAppealService>();
+            services.AddTransient<ISubtypeAppealService, SubtypeAppealService>();
         }
     }
 }

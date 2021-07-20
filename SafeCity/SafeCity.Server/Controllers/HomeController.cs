@@ -22,14 +22,17 @@ namespace SafeCity.Server.Controllers
         private readonly IEmailSenderService _emailSenderService;
         private readonly IFileStorageService _fileStorageService;
         private readonly ITypeAppealService _typeAppealService;
+        private readonly ISubtypeAppealService _subtypeAppealService;
 
         public CitizensAppealsController(IUnitOfWork uow, IEmailSenderService emailSenderService,
-            IFileStorageService fileStorageService, ITypeAppealService typeAppealService)
+            IFileStorageService fileStorageService, ITypeAppealService typeAppealService,
+            ISubtypeAppealService subtypeAppealService)
         {
             _uow = uow;
             _emailSenderService = emailSenderService;
             _fileStorageService = fileStorageService;
             _typeAppealService = typeAppealService;
+            _subtypeAppealService = subtypeAppealService;
         }
 
         [HttpGet("ping")]
@@ -117,9 +120,7 @@ namespace SafeCity.Server.Controllers
         [HttpGet("subtypesbytype")]
         public async Task<IActionResult> GetSubtypeByTypeAppeal(string nameType)
         {
-            using (_uow)
-                return Ok(await ((SubtypeAppealRepository) _uow.GetRepositories<AppealSubtype>())
-                    .GetSubtypeByTypeAppealAsync(nameType));
+            return Ok(await _subtypeAppealService.GetSubtypeByTypeAppealAsync(nameType));
         }
     }
 }
