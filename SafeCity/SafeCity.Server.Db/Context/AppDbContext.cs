@@ -57,25 +57,25 @@ namespace SafeCity.Server.Db.Context
                 new AppealSubtype()
                 {
                     Key = 2,
-                    Name = "Наличие/качество пешеходных переходов",
+                    Name = "Отсутствие/качество пешеходных переходов",
                     TypesId = 1
                 },
                 new AppealSubtype()
                 {
                     Key = 3,
-                    Name = "Наличие/качество освещения",
+                    Name = "Отсутствие/качество освещения",
                     TypesId = 1
                 },
                 new AppealSubtype()
                 {
                     Key = 4,
-                    Name = "Безопасная дорога в школу для детей",
+                    Name = "Безопасная дорога в школу",
                     TypesId = 1
                 },
                 new AppealSubtype()
                 {
                     Key = 5,
-                    Name = "Отсутствие/качество тротуаров",
+                    Name = "Ккачество тротуаров",
                     TypesId = 2
                 },
                 new AppealSubtype()
