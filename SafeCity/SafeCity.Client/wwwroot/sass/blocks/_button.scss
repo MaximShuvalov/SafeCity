@@ -9,25 +9,25 @@
     transition: all .3s;    
     &_road{
         color: white;
-        background-color: #dc3546;
+        background-color: $road_color;
         &:hover{
-            background-color: #be2f3d;
+            background-color: $road_hover_color;
         }
     }
     &_live{
         color: rgb(0, 0, 0);
-        background-color: #ffc107;
+        background-color: $live_color;
         &:hover{
             color: white;
-            background-color: #dda600;
+            background-color: $live_hover_color;
         }
     }
     &_solved{
         color: white;
-        background-color: #4169e1;
+        background-color: $solved_color;
         &:hover{
             color: white;
-            background-color: #3558c2;
+            background-color: $solved_hover_color;
         }
     }
 }

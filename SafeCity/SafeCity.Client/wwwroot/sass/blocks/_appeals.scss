@@ -1,0 +1,99 @@
+.appeals{
+    padding-top: 20px;
+    &__wraper{
+        margin-top: 20px;
+        display: flex;
+        justify-content: start;
+        flex-wrap: wrap;
+    }
+    h1{
+        font-weight: bold;
+        color: $title_color;
+        font-size: 1.75rem;
+        margin: 0;
+    }
+    &__tabs{
+        padding: 0;
+        display: flex;
+        justify-content: space-evenly;
+        margin: 20px 0 20px 0;
+    }
+    &__tab{
+        list-style-type: none;
+        font-weight: bold;
+        font-size: 18px;
+        text-align: center;
+        color: $title_color;
+        width: 270px;
+        cursor: pointer;
+        padding: 5px 15px 5px 15px;
+        border-radius: 7px;
+        border: 8px solid $title_color;
+        transition: all .4s;
+        &:hover{
+            box-shadow: 1px 3px 13px 5px $title_color;
+        }
+        &_active{
+            background-color: $title_color;
+            color: white;
+        }
+    }
+}
+.appeal-item{
+    display: none;
+    margin: 0 0 20px 20px;
+    line-height: 1;
+    width: 250px;
+    min-height: 350px;
+    padding: 20px;
+    border-radius: 7px;
+    border: 8px solid;
+    overflow: hidden;
+    &__img{
+        height: 140px;
+    }
+    &__footer{
+        min-height: 210px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; 
+    }
+    &__address{
+        font-weight: 500;
+        text-align: center;
+        line-height: 2;
+        font-size: 20px;
+    }
+    &__descr{
+        text-align: justify;
+    }
+    &__category{
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        &_road{
+            color:$road_color;
+        }
+        &_live{
+            color:$live_color;
+        }
+        &_solved{
+            color:$solved_color;
+        }
+    }
+    &__date{
+        font-size: 14px;
+    }
+    &_road{
+        border-color:$road_color;
+    }
+    &_live{
+        border-color:$live_color;
+    }
+    &_solved{
+        border-color:$solved_color;
+    }
+    &_active{
+        display: block;
+    }
+}

@@ -12,7 +12,7 @@ body {
     color: #212529;
 }
 .map{
-    height: 400px;
+    height: 600px;
 }
 @import 'base/vars.scss';
 @import 'blocks/header';
@@ -21,3 +21,4 @@ body {
 @import 'blocks/button';
 @import 'blocks/solved';
 @import 'blocks/footer';
+@import 'blocks/appeals';

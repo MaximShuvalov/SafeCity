@@ -9,26 +9,26 @@ gulp.task('server', function() {
 
     browserSync({
         server: {
-            baseDir: "UI"
+            baseDir: "SafeCity/SafeCity.Client/wwwroot"
         }
     });
 
-    gulp.watch("UI/*.html").on('change', browserSync.reload);
+    gulp.watch("SafeCity/SafeCity.Client/wwwroot/*.html").on('change', browserSync.reload);
 });
 
 gulp.task('styles', function() {
-    return gulp.src("UI/sass/**/*.+(scss|sass)")
+    return gulp.src("SafeCity/SafeCity.Client/wwwroot/sass/**/*.+(scss|sass)")
         .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(sass.sync())
         .pipe(rename({suffix: '.min', prefix: ''}))
         .pipe(autoprefixer())
         .pipe(cleanCSS({compatibility: 'ie8'}))
-        .pipe(gulp.dest("UI/css"))
+        .pipe(gulp.dest("SafeCity/SafeCity.Client/wwwroot/css"))
         .pipe(browserSync.stream());
 });
 
 gulp.task('watch', function() {
-    gulp.watch("UI/sass/**/*.+(scss|sass)", gulp.parallel('styles'));
+    gulp.watch("SafeCity/SafeCity.Client/wwwroot/sass/**/*.+(scss|sass)", gulp.parallel('styles'));
 });
 
 gulp.task('default', gulp.parallel('watch', 'server', 'styles'));
