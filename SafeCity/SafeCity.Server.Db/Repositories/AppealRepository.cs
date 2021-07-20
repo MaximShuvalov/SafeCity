@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Model;
 using SafeCity.Server.Db.Context;
-using SafeCity.Server.Db.Factory;
 
 namespace SafeCity.Server.Db.Repositories
 {
@@ -20,9 +19,6 @@ namespace SafeCity.Server.Db.Repositories
 
         public Appeal Get(long id) => _context.Appeal.Include(o => o.AppealSubtype)
             .FirstOrDefault(p => p.Key.Equals(id));
-
-        public Appeal Get(Appeal appeal) => _context.Appeal.Include(o => o.AppealSubtype)
-            .FirstOrDefault(p => p.Text.Equals(appeal.Text) && p.Email.Equals(appeal.Email));
 
         public async Task<IEnumerable<Appeal>> GetEntities() => await Task.Run(() =>
         {
@@ -41,22 +37,6 @@ namespace SafeCity.Server.Db.Repositories
             if (entity is null)
                 throw new ArgumentException("Appeal is null");
             _context.Appeal.Remove(entity);
-        }
-
-        public async Task Add(Appeal appeal, string nameSubtypeAppeal)
-        {
-            var subtypeAppealRepository = RepositoryFactory<AppealSubtype>.Create(_context);
-
-            var subtypeAppeals = await subtypeAppealRepository.GetEntities();
-
-            var subtypeAppeal = subtypeAppeals.FirstOrDefault(p => p.Name.Equals(nameSubtypeAppeal));
-            if (subtypeAppeal is null)
-                throw new Exception("The database does not contain the given object");
-            appeal.SubtypeId = subtypeAppeal.Key;
-            appeal.AppealTypeId = subtypeAppeal.TypesId;
-            appeal.IsResolve = false;
-
-            await Add(appeal);
         }
     }
 }
