@@ -12,13 +12,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafeCity.Server.Db.Tests", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafeCity.Server.Model.Tests", "SafeCity.Server.Model.Tests\SafeCity.Server.Model.Tests.csproj", "{6CB7F9BD-2E8C-4B08-9933-4AED512E0995}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafeCity.UI", "SafeCity.UI\SafeCity.UI.csproj", "{D682EA16-75D2-437B-BB09-AAF4FB987A6C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafeCity.EmailSender", "SafeCity.EmailSender\SafeCity.EmailSender.csproj", "{7B147696-C6D4-48D6-8090-6CE7C5D3F70D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SefeCity.EmailSender.Tests", "SefeCity.EmailSender.Tests\SefeCity.EmailSender.Tests.csproj", "{2F11A62B-864E-43D9-8184-9CF55F3760E4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafeCity.Client", "SafeCity.Client\SafeCity.Client.csproj", "{13050F8D-8D06-4E16-9828-97139C3F7543}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafeCity.FileStorage", "SafeCity.FileStorage\SafeCity.FileStorage.csproj", "{F241C7E2-846B-4FEB-A871-358A719B1721}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafeCity.FileStorage.Tests", "SafeCity.FileStorage.Tests\SafeCity.FileStorage.Tests.csproj", "{339BAC55-1E88-40EA-8935-844D8124A6B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,10 +52,6 @@ Global
 		{6CB7F9BD-2E8C-4B08-9933-4AED512E0995}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CB7F9BD-2E8C-4B08-9933-4AED512E0995}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CB7F9BD-2E8C-4B08-9933-4AED512E0995}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D682EA16-75D2-437B-BB09-AAF4FB987A6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D682EA16-75D2-437B-BB09-AAF4FB987A6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D682EA16-75D2-437B-BB09-AAF4FB987A6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D682EA16-75D2-437B-BB09-AAF4FB987A6C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7B147696-C6D4-48D6-8090-6CE7C5D3F70D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7B147696-C6D4-48D6-8090-6CE7C5D3F70D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B147696-C6D4-48D6-8090-6CE7C5D3F70D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -66,5 +64,13 @@ Global
 		{13050F8D-8D06-4E16-9828-97139C3F7543}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13050F8D-8D06-4E16-9828-97139C3F7543}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13050F8D-8D06-4E16-9828-97139C3F7543}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F241C7E2-846B-4FEB-A871-358A719B1721}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F241C7E2-846B-4FEB-A871-358A719B1721}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F241C7E2-846B-4FEB-A871-358A719B1721}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F241C7E2-846B-4FEB-A871-358A719B1721}.Release|Any CPU.Build.0 = Release|Any CPU
+		{339BAC55-1E88-40EA-8935-844D8124A6B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{339BAC55-1E88-40EA-8935-844D8124A6B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{339BAC55-1E88-40EA-8935-844D8124A6B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{339BAC55-1E88-40EA-8935-844D8124A6B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
