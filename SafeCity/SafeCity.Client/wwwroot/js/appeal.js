@@ -67,7 +67,10 @@ async function postAppeal() {
     document.location.href = "https://bkg.sibadi.org";
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> appealFormUI
 //file extension validation
 document.getElementById("file").addEventListener("change", validateFile)
 
