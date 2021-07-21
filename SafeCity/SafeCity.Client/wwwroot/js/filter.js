@@ -25,7 +25,8 @@ $(document).ready(function(){
         $('ul.appeals__tabs').on('click', 'li:not(.appeals__tab_active)', function() {
             $(this).addClass('appeals__tab_active').siblings().removeClass('appeals__tab_active');
         });
-    });
+      });
+
     filter('.appeals__tab_all');
     filter('.appeals__tab_road');
     filter('.appeals__tab_live');

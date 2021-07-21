@@ -42,7 +42,16 @@
         font-weight: 400;
         margin: 0;
     }
-    .sib-logo{
-        height: 65px;
+    .side{
+        width: 420px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &__sib-logo{
+            height: 65px;
+        }
+        &__qr{
+            height: 65px;
+        }
     }
 }
