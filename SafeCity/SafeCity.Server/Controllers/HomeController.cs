@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Model;
 using SafeCity.EmailSender;
+using SafeCity.FileStorage.Core;
 using SafeCity.Server.Db.Context;
 using SafeCity.Server.Db.Extensions;
-using SafeCity.Server.Db.Factory;
 using SafeCity.Server.Db.Repositories;
 using SafeCity.Server.Db.UnitOfWork;
 
@@ -20,12 +21,15 @@ namespace SafeCity.Server.Controllers
         private readonly AppDbContext _context;
         private readonly IUnitOfWork _uow;
         private readonly IEmailSenderService _emailSenderService;
+        private readonly IFileStorageService _fileStorageService;
 
-        public CitizensAppealsController(AppDbContext context, IUnitOfWork uow, IEmailSenderService emailSenderService)
+        public CitizensAppealsController(AppDbContext context, IUnitOfWork uow, IEmailSenderService emailSenderService,
+            IFileStorageService fileStorageService)
         {
             _context = context;
             _uow = uow;
             _emailSenderService = emailSenderService;
+            _fileStorageService = fileStorageService;
         }
 
         [HttpGet("ping")]
@@ -59,6 +63,14 @@ namespace SafeCity.Server.Controllers
         public async Task<IActionResult> AddAppeal([FromBody] Appeal appeal, [FromQuery] string nameSubtype)
         {
             Console.WriteLine($"Подтип '{nameSubtype}'");
+            
+            if (!string.IsNullOrEmpty(appeal.Attachment))
+            {
+                var attachmentPath = await _fileStorageService.SaveAttachment(appeal.Attachment);
+                appeal.AttachmentPath = attachmentPath;
+                appeal.Attachment = String.Empty;
+            }
+
             Appeal createdAppeal = null;
             using (_uow)
             {
@@ -69,10 +81,17 @@ namespace SafeCity.Server.Controllers
 
             Console.WriteLine("Обращение создано");
 
-            //if (createdAppeal != null)
-            //    await SendEmail(createdAppeal);
+            if (createdAppeal != null)
+                await SendEmail(createdAppeal);
 
             return Ok();
+        }
+        
+        public static bool IsBase64String(string s)
+        {
+            s = s.Trim();
+            return (s.Length % 4 == 0) && Regex.IsMatch(s, @"^[a-zA-Z0-9\+/]*={0,3}$", RegexOptions.None);
+        
         }
 
         private async Task SendEmail(Appeal appeal)
@@ -96,7 +115,7 @@ namespace SafeCity.Server.Controllers
             using (_uow)
             {
                 var allClasses = await _uow.GetRepositories<AppealType>().GetEntities();
-                return Ok(allClasses.FirstOrDefault(p=> p.Name.Equals(nameClass)));
+                return Ok(allClasses.FirstOrDefault(p => p.Name.Equals(nameClass)));
             }
         }
 

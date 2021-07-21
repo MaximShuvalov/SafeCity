@@ -54,6 +54,7 @@ namespace SafeCity.Server.Db.Repositories
                 throw new Exception("The database does not contain the given object");
             appeal.SubtypeId = subtypeAppeal.Key;
             appeal.AppealTypeId = subtypeAppeal.TypesId;
+            appeal.IsResolve = false;
 
             await Add(appeal);
         }
