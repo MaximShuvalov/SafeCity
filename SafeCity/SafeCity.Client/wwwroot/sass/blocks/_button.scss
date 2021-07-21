@@ -30,4 +30,25 @@
             background-color: $solved_hover_color;
         }
     }
+    &_appeal{
+        color: white;
+        background-color: $title_color;
+        height: 70px;
+        width: 300px;
+        font-size: 22px;
+        border-radius: 8px;
+        &:hover{
+            color: white;
+            background-color: $title_hover_color;
+        }
+    }
+    &_header{
+        color: white;
+        background-color: $title_color;
+        &:hover{
+            color: white;
+            background-color: $title_hover_color;
+        }
+    }
+
 }

@@ -9,7 +9,7 @@ let fetchAllCategory = fetch(urlCategory)
 fetchAllCategory.then(function (response) {
     response.text().then(function (text) {
         var sel = document.getElementById("appealCategory");
-        var options = JSON.parse(text)
+        var options = JSON.parse(text);
 
         for (var i = 0; i <= options.length - 1; i++) {
             var opt = document.createElement('option');
@@ -67,18 +67,21 @@ async function postAppeal() {
     document.location.href = "https://bkg.sibadi.org";
 }
 
-const readUploadedFileAsBinary = (inputFile) => {
-    const temporaryFileReader = new FileReader();
+//file extension validation
+document.getElementById("file").addEventListener("change", validateFile)
 
-    return new Promise((resolve, reject) => {
-        temporaryFileReader.onerror = () => {
-            temporaryFileReader.abort();
-            reject(new DOMException("Problem parsing input file."));
-        };
+function validateFile(){
+    const allowedExtensions =  ['jpg','jpeg','png','pdf'],
+    sizeLimit = 2000000;
+    const { name:fileName, size:fileSize } = this.files[0];
+    const fileExtension = fileName.split(".").pop();
 
-        temporaryFileReader.onload = () => {
-            resolve(temporaryFileReader.result);
-        };
-        temporaryFileReader.readAsDataURL(inputFile);
-    });
-};
+    if(!allowedExtensions.includes(fileExtension)){
+        alert("Пожалуйста, выберите файл .jpg, .jpeg, .png или .pdf расширения");
+        this.value = null;
+    }else if(fileSize > sizeLimit){
+        alert("Размер файла не должен превышать 2 МБ")
+        this.value = null;
+    }
+}
+
