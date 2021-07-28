@@ -63,12 +63,12 @@ namespace SafeCity.Server.Db.Tests
 
             var repos = new AppealRepository(new AppDbContext());
 
-            repos.Add(appeal);
-            repos.Add(appeal1);
+            await repos.Add(appeal);
+            await repos.Add(appeal1);
 
             var appeals = await repos.GetEntities();
 
-            Assert.IsTrue(appeals.ToList().Count() > 0);
+            Assert.IsTrue(appeals.ToList().Any());
 
             repos.Delete(appeal);
             repos.Delete(appeal1);
