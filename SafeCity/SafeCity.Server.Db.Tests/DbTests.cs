@@ -63,41 +63,41 @@ namespace SafeCity.Server.Db.Tests
 
             var repos = new AppealRepository(new AppDbContext());
 
-            repos.Add(appeal);
-            repos.Add(appeal1);
+            await repos.Add(appeal);
+            await repos.Add(appeal1);
 
             var appeals = await repos.GetEntities();
 
-            Assert.IsTrue(appeals.ToList().Count() > 0);
+            Assert.IsTrue(appeals.ToList().Any());
 
             repos.Delete(appeal);
             repos.Delete(appeal1);
         }
 
-        [Test]
-        [Explicit("Интеграционный")]
-        public void AddAppealTest()
-        {
-            var appeal = new Appeal()
-            {
-                Email = "test@test.com"
-            };
-            
-            var appeal2 = new Appeal()
-            {
-                Email = "test2@test.com"
-            };
-
-            var repos1 = RepositoryFactory<Appeal>.Create(new AppDbContext());
-
-            ((AppealRepository)repos1).Add(appeal,  "TestSubtype");
-            ((AppealRepository)repos1).Add(appeal2,  "TestSubtype");
-            repos1.Delete(appeal);
-            repos1.Delete(appeal2);
-
-
-            Assert.Pass();
-        }
+        // [Test]
+        // [Explicit("Интеграционный")]
+        // public void AddAppealTest()
+        // {
+        //     var appeal = new Appeal()
+        //     {
+        //         Email = "test@test.com"
+        //     };
+        //     
+        //     var appeal2 = new Appeal()
+        //     {
+        //         Email = "test2@test.com"
+        //     };
+        //
+        //     var repos1 = RepositoryFactory<Appeal>.Create(new AppDbContext());
+        //
+        //     ((AppealRepository)repos1).Add(appeal,  "TestSubtype");
+        //     ((AppealRepository)repos1).Add(appeal2,  "TestSubtype");
+        //     repos1.Delete(appeal);
+        //     repos1.Delete(appeal2);
+        //
+        //
+        //     Assert.Pass();
+        // }
 
         [Test]
         [Explicit("Интеграционный")]
@@ -147,27 +147,27 @@ namespace SafeCity.Server.Db.Tests
             repos.Delete(appeal1);
         }
 
-        [Test]
-        [Explicit("Интеграционный")]
-        public void GetAppealTest()
-        {
-            var appeal2 = new Appeal()
-            {
-                Key = 1217,
-                Email = "test2@test.com"
-            };
-
-            var repos1 = RepositoryFactory<Appeal>.Create(new AppDbContext());
-
-            ((AppealRepository)repos1).Add(appeal2, "TestSubtype");
-
-            var receivedAppeal = repos1.Get(appeal2.Key);
-            
-            Assert.True(receivedAppeal.Key.Equals(appeal2.Key));
-            Assert.True(receivedAppeal.Email.Equals(appeal2.Email));
-            Assert.True(receivedAppeal.AppealSubtype.Name.Equals(appeal2.AppealSubtype.Name));
-            
-            repos1.Delete(appeal2);
-        }
+        // [Test]
+        // [Explicit("Интеграционный")]
+        // public void GetAppealTest()
+        // {
+        //     var appeal2 = new Appeal()
+        //     {
+        //         Key = 1217,
+        //         Email = "test2@test.com"
+        //     };
+        //
+        //     var repos1 = RepositoryFactory<Appeal>.Create(new AppDbContext());
+        //
+        //     ((AppealRepository)repos1).Add(appeal2, "TestSubtype");
+        //
+        //     var receivedAppeal = repos1.Get(appeal2.Key);
+        //     
+        //     Assert.True(receivedAppeal.Key.Equals(appeal2.Key));
+        //     Assert.True(receivedAppeal.Email.Equals(appeal2.Email));
+        //     Assert.True(receivedAppeal.AppealSubtype.Name.Equals(appeal2.AppealSubtype.Name));
+        //     
+        //     repos1.Delete(appeal2);
+        // }
     }
 }

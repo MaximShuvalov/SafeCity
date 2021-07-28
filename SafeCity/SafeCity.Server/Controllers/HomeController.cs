@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Model;
 using SafeCity.EmailSender;
 using SafeCity.FileStorage.Core;
-using SafeCity.Server.Db.Context;
 using SafeCity.Server.Db.Extensions;
 using SafeCity.Server.Db.Repositories;
+using SafeCity.Server.Db.Services;
 using SafeCity.Server.Db.UnitOfWork;
 
 namespace SafeCity.Server.Controllers
@@ -18,18 +18,23 @@ namespace SafeCity.Server.Controllers
     [ApiController]
     public class CitizensAppealsController : ControllerBase
     {
-        private readonly AppDbContext _context;
         private readonly IUnitOfWork _uow;
         private readonly IEmailSenderService _emailSenderService;
         private readonly IFileStorageService _fileStorageService;
+        private readonly ITypeAppealService _typeAppealService;
+        private readonly ISubtypeAppealService _subtypeAppealService;
+        private readonly IAppealService _appealService;
 
-        public CitizensAppealsController(AppDbContext context, IUnitOfWork uow, IEmailSenderService emailSenderService,
-            IFileStorageService fileStorageService)
+        public CitizensAppealsController(IUnitOfWork uow, IEmailSenderService emailSenderService,
+            IFileStorageService fileStorageService, ITypeAppealService typeAppealService,
+            ISubtypeAppealService subtypeAppealService, IAppealService appealService)
         {
-            _context = context;
             _uow = uow;
             _emailSenderService = emailSenderService;
             _fileStorageService = fileStorageService;
+            _typeAppealService = typeAppealService;
+            _subtypeAppealService = subtypeAppealService;
+            _appealService = appealService;
         }
 
         [HttpGet("ping")]
@@ -39,11 +44,8 @@ namespace SafeCity.Server.Controllers
         }
 
         [HttpGet("all")]
-        public async Task<IActionResult> GetAllAppeal()
-        {
-            using (_uow)
-                return Ok(await _uow.GetRepositories<Appeal>().GetEntities());
-        }
+        public async Task<IActionResult> GetAllAppeal() => Ok(await _appealService.GetAllAsync());
+
 
         // [HttpGet("allpoints")]
         // public async Task<IActionResult> GetAllPoints()
@@ -63,7 +65,7 @@ namespace SafeCity.Server.Controllers
         public async Task<IActionResult> AddAppeal([FromBody] Appeal appeal, [FromQuery] string nameSubtype)
         {
             Console.WriteLine($"Подтип '{nameSubtype}'");
-            
+
             if (!string.IsNullOrEmpty(appeal.Attachment))
             {
                 var attachmentPath = await _fileStorageService.SaveAttachment(appeal.Attachment);
@@ -71,13 +73,7 @@ namespace SafeCity.Server.Controllers
                 appeal.Attachment = String.Empty;
             }
 
-            Appeal createdAppeal = null;
-            using (_uow)
-            {
-                await ((AppealRepository) _uow.GetRepositories<Appeal>()).Add(appeal, nameSubtype);
-                createdAppeal = ((AppealRepository) _uow.GetRepositories<Appeal>()).Get(appeal);
-                _uow.Commit();
-            }
+            var createdAppeal = await _appealService.Add(appeal, nameSubtype);
 
             Console.WriteLine("Обращение создано");
 
@@ -85,13 +81,6 @@ namespace SafeCity.Server.Controllers
                 await SendEmail(createdAppeal);
 
             return Ok();
-        }
-        
-        public static bool IsBase64String(string s)
-        {
-            s = s.Trim();
-            return (s.Length % 4 == 0) && Regex.IsMatch(s, @"^[a-zA-Z0-9\+/]*={0,3}$", RegexOptions.None);
-        
         }
 
         private async Task SendEmail(Appeal appeal)
@@ -104,27 +93,21 @@ namespace SafeCity.Server.Controllers
         public async Task<IActionResult> GetAllTypesAppeal()
         {
             Console.WriteLine("Принят запрос на получение классов обращений");
-            using (_uow)
-                return Ok(await _uow.GetRepositories<AppealType>().GetEntities());
+            return Ok(await _typeAppealService.GetAllAsync());
         }
 
         [HttpGet("classbyname")]
         public async Task<IActionResult> GetAllTypesAppeal(string nameClass)
         {
             Console.WriteLine("Принят запрос на получение классов обращений");
-            using (_uow)
-            {
-                var allClasses = await _uow.GetRepositories<AppealType>().GetEntities();
-                return Ok(allClasses.FirstOrDefault(p => p.Name.Equals(nameClass)));
-            }
+            var allClasses = await _typeAppealService.GetAllAsync();
+            return Ok(allClasses.FirstOrDefault(p => p.Name.Equals(nameClass)));
         }
 
         [HttpGet("subtypesbytype")]
         public async Task<IActionResult> GetSubtypeByTypeAppeal(string nameType)
         {
-            using (_uow)
-                return Ok(await ((SubtypeAppealRepository) _uow.GetRepositories<AppealSubtype>())
-                    .GetSubtypeByTypeAppealAsync(nameType));
+            return Ok(await _subtypeAppealService.GetSubtypeByTypeAppealAsync(nameType));
         }
     }
 }
