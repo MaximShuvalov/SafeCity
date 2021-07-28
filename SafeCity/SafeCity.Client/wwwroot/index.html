@@ -19,7 +19,11 @@
                         <!-- <li class="header__nav-item"><a href="#">Контакты</a></li> -->
                     </ul>
                 </div>
-                <a href="https://sibadi.org" target="_blank"><img src="img/SibADI_logo.png" alt="СИБАДИ" class="sib-logo"></a>
+                <div class="side">
+                    <button class="button button_header" onclick="location.href='apeal.html'">Сообщить о проблеме</button>
+                    <a href="https://sibadi.org" target="_blank"><img src="img/SibADI_logo.png" alt="СИБАДИ" class="side__sib-logo"></a>
+                    <a href="https://t.me/bkg_sibadibot" target="_blank"><img src="img/qr.png" alt="Телеграм бот" class="side__qr"></a>
+                </div>
             </div>
 		</div>
     </header>
@@ -34,19 +38,19 @@
         <div class="container">
             <div class="stats__wraper">
                 <div class="stats__item stats__item_road">
-                    <div class="stats__number stats__number_road">45</div>
+                    <div class="stats__number stats__number_road">71</div>
                     <div class="stats__descr">Безопасность на дорогах</div> 
                     <hr>
                     <button class="button button_road" onclick="location.href='apeal.html'">Сообщить о проблеме</button> 
                 </div>
                 <div class="stats__item stats__item_live">
-                    <div class="stats__number stats__number_live">30</div>
+                    <div class="stats__number stats__number_live">112</div>
                     <div class="stats__descr">Комфортность проживания</div>  
                     <hr>
                     <button class="button button_live" onclick="location.href='apeal.html'">Сообщить о проблеме</button> 
                 </div>
                 <div class="stats__item stats__item_solved">
-                    <div class="stats__number stats__number_solved">30</div>
+                    <div class="stats__number stats__number_solved">67</div>
                     <div class="stats__descr">Решенные проблемы</div>  
                     <hr>
                     <button class="button button_solved">Просмотреть список</button> 
@@ -68,22 +72,28 @@
             <h2>Уже решено:</h2>
             <div class="uk-position-relative uk-visible-toggle " tabindex="-1" uk-slider="center: true; finite: true">
                 <ul class="uk-slider-items uk-grid uk-grid-match" uk-height-viewport="offset-top: true; offset-bottom: 30">
-                    <li class="uk-width-3-4 uk-light">
+                    <li class="uk-width-3-4 uk-dark">
                         <div class="uk-cover-container ">
-                            <img src="img/1.jpg" alt="" uk-cover>
-                            <div class="uk-position-bottom-center uk-panel"><h1>Description</h1></div>
-                        </div>
-                    </li>
-                    <li class="uk-width-3-4 uk-light">
-                        <div class="uk-cover-container">
-                            <img src="img/2.jpg" alt="" uk-cover>
-                            <div class="uk-position-bottom-center uk-panel"><h1>Description</h1></div>
+                            <img src="img/slides/1.jfif" alt="" uk-cover>
+                            <div class="uk-position-bottom-center uk-panel"><h1 class="slider-descr">Менделеева, 24. Люк закрыли</h1></div>
                         </div>
                     </li>
                     <li class="uk-width-3-4 uk-dark">
                         <div class="uk-cover-container">
-                            <img src="img/3.jpg" alt="" uk-cover>
-                            <div class="uk-position-bottom-center uk-panel"><h1>Description</h1></div>
+                            <img src="img/slides/2.jfif" alt="" uk-cover>
+                            <div class="uk-position-bottom-center uk-panel"><h1 class="slider-descr">4я-Поселковая ЖКХ «СЕРВИС» вывез мешки мусора.</h1></div>
+                        </div>
+                    </li>
+                    <li class="uk-width-3-4 uk-dark">
+                        <div class="uk-cover-container">
+                            <img src="img/slides/3.jfif" alt="" uk-cover>
+                            <div class="uk-position-bottom-center uk-panel"><h1 class="slider-descr">Менделеева, д 40/12 к 2 Перевренутый знак. Исправили!</h1></div>
+                        </div>
+                    </li>
+                    <li class="uk-width-3-4 uk-dark">
+                        <div class="uk-cover-container">
+                            <img src="img/slides/4.jfif" alt="" uk-cover>
+                            <div class="uk-position-bottom-center uk-panel"><h1 class="slider-descr">Блюхера , 8 Убрали около территории для мусора</h1></div>
                         </div>
                     </li>
                 </ul>
